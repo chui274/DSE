@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="ProyectosPSOC\ProyectoFinal\Source Files\main.c">
+<ExpandedNodeIds>
+<v>ProyectosPSOC</v>
+<v>ProyectosPSOC\Design01\TopDesign</v>
+<v>ProyectosPSOC\Design01\Design01.cydwr</v>
+<v>ProyectosPSOC\Design01\Header Files</v>
+<v>ProyectosPSOC\Design01\Header Files\cyapicallbacks.h</v>
+<v>ProyectosPSOC\Design01\Source Files</v>
+<v>ProyectosPSOC\Design01\Source Files\main.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\cmsis_armcc.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\cmsis_gcc.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\cypins.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\Entrada</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\Entrada\Entrada.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\Entrada\Entrada.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\Entrada\Entrada_aliases.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\LCD_Char_1</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\LCD_Char_1\LCD_Char_1.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\LCD_Char_1\LCD_Char_1.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\LCD_Char_1\LCD_Char_1_PM.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\LCD_Char_1_LCDPort</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\LCD_Char_1_LCDPort\LCD_Char_1_LCDPort.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\LCD_Char_1_LCDPort\LCD_Char_1_LCDPort.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\LCD_Char_1_LCDPort\LCD_Char_1_LCDPort_aliases.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cydevice.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cyfitter.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\cymetadata.c</v>
+<v>ProyectosPSOC\Design01\Generated_Source\PSoC5\project.h</v>
+<v>ProyectosPSOC\ProyectoFinal</v>
+<v>ProyectosPSOC\ProyectoFinal\TopDesign</v>
+<v>ProyectosPSOC\ProyectoFinal\ProyectoFinal.cydwr</v>
+<v>ProyectosPSOC\ProyectoFinal\Header Files\cyapicallbacks.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Source Files</v>
+<v>ProyectosPSOC\ProyectoFinal\Source Files\main.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC\ADC.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC\ADC.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC\ADC_INT.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC\ADC_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_AMux</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_AMux\ADC_AMux.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_AMux\ADC_AMux.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_Ext_CP_Clk</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_IRQ</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_IRQ\ADC_IRQ.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_IRQ\ADC_IRQ.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_theACLK</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_theACLK\ADC_theACLK.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\ADC_theACLK\ADC_theACLK.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Clock</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Clock\Clock.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Clock\Clock.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Clock_1</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Clock_1\Clock_1.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Clock_1\Clock_1.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\CyBootAsmKeil.a51</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\CyDmac.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\CyDmac.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\CyFlash.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\CyFlash.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\CyLib.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\CyLib.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\cymem.a51</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\cypins.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\cyPm.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\cyPm.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\CySpc.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\CySpc.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\cytypes.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\cyutils.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\KeilStart.a51</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\PSoC3_8051.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cy_boot\PSoC3_8051.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\DistOutHCSRO4</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\DistOutHCSRO4\DistOutHCSRO4.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\DistOutHCSRO4\DistOutHCSRO4.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\DistOutHCSRO4\DistOutHCSRO4_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\LCD</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\LCD\LCD.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\LCD\LCD.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\LCD\LCD_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\LCD_LCDPort</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\LCD_LCDPort\LCD_LCDPort.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\LCD_LCDPort\LCD_LCDPort.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\LCD_LCDPort\LCD_LCDPort_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\pot</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\pot\pot.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\pot\pot.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\pot\pot_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Pulse</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Pulse\Pulse.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Pulse\Pulse.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Pulse\Pulse_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\PWM</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\PWM\PWM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\PWM\PWM.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\PWM\PWM_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\TimeDistMeas</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\TimeDistMeas\TimeDistMeas.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\TimeDistMeas\TimeDistMeas.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\TimeDistMeas\TimeDistMeas_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Trig</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Trig\Trig.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Trig\Trig.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Trig\Trig_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Triggen</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Triggen\Triggen.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Triggen\Triggen.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\Triggen\Triggen_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cycodeshareexport.ld</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cycodeshareimport.ld</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cycodeshareimport.scat</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cydevice.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cydevice_trm.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cydevicekeil.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cydevicekeil_trm.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cydisabledsheets.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cyfitter.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cyfitter_cfg.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cyfitter_cfg.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\cyfitterkeil.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3\project.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC\ADC.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC\ADC.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC\ADC_INT.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC\ADC_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_AMux</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_AMux\ADC_AMux.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_AMux\ADC_AMux.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_Ext_CP_Clk</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_IRQ</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_theACLK</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Clock_1</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Clock_1\Clock_1.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\cypins.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\DistOutHCSRO4</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\DistOutHCSRO4\DistOutHCSRO4.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\DistOutHCSRO4\DistOutHCSRO4.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\DistOutHCSRO4\DistOutHCSRO4_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\foto</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\foto\foto.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\foto\foto.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\foto\foto_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\LCD</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\LCD\LCD.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\LCD\LCD.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\LCD\LCD_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\LCD_LCDPort</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\pot</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\pot\pot.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\pot\pot.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\pot\pot_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\TimeDistMeas</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\TimeDistMeas\TimeDistMeas.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\TimeDistMeas\TimeDistMeas.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\TimeDistMeas\TimeDistMeas_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\toma</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\toma\toma.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\toma\toma.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\toma\toma_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Trig</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Trig\Trig.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Trig\Trig.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Trig\Trig_aliases.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Triggen</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Triggen\Triggen.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Triggen\Triggen.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Triggen\Triggen_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cydevice.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cyfitter.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\cymetadata.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\project.h</v>
+<v>ProyectosPSOC\ServoMotores\TopDesign</v>
+<v>ProyectosPSOC\ServoMotores\ServoMotores.cydwr</v>
+<v>ProyectosPSOC\ServoMotores\Header Files</v>
+<v>ProyectosPSOC\ServoMotores\Header Files\cyapicallbacks.h</v>
+<v>ProyectosPSOC\ServoMotores\Source Files</v>
+<v>ProyectosPSOC\ServoMotores\Source Files\main.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC\ADC.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC\ADC.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC\ADC_INT.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC\ADC_PM.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_AMux</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_AMux\ADC_AMux.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_AMux\ADC_AMux.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_Ext_CP_Clk</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_IRQ</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_theACLK</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\Clock</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\Clock\Clock.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\Clock\Clock.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\cypins.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\LCD</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\LCD\LCD.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\LCD\LCD.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\LCD\LCD_PM.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\LCD_LCDPort</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort_aliases.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\pot</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\pot\pot.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\pot\pot.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\pot\pot_aliases.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\Pulse</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\Pulse\Pulse.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\Pulse\Pulse.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\Pulse\Pulse_aliases.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\PWM</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\PWM\PWM.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\PWM\PWM.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\PWM\PWM_PM.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cydevice.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cyfitter.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\cymetadata.c</v>
+<v>ProyectosPSOC\ServoMotores\Generated_Source\PSoC5\project.h</v>
+<v>ProyectosPSOC\UltraSonidos</v>
+<v>ProyectosPSOC\UltraSonidos\TopDesign</v>
+<v>ProyectosPSOC\UltraSonidos\UltraSonidos.cydwr</v>
+<v>ProyectosPSOC\UltraSonidos\Header Files</v>
+<v>ProyectosPSOC\UltraSonidos\Header Files\cyapicallbacks.h</v>
+<v>ProyectosPSOC\UltraSonidos\Source Files</v>
+<v>ProyectosPSOC\UltraSonidos\Source Files\main.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Clock_1</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Clock_1\Clock_1.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\cypins.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\DistOutHCSRO4</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\DistOutHCSRO4\DistOutHCSRO4.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\DistOutHCSRO4\DistOutHCSRO4.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\DistOutHCSRO4\DistOutHCSRO4_aliases.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\LCD</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\LCD\LCD.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\LCD\LCD.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\LCD\LCD_PM.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\LCD_LCDPort</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\LCD_LCDPort\LCD_LCDPort_aliases.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\TimeDistMeas</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\TimeDistMeas\TimeDistMeas.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\TimeDistMeas\TimeDistMeas.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\TimeDistMeas\TimeDistMeas_PM.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Trig</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Trig\Trig.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Trig\Trig.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Trig\Trig_aliases.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Triggen</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Triggen\Triggen.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Triggen\Triggen.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\Triggen\Triggen_PM.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cydevice.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cyfitter.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\cymetadata.c</v>
+<v>ProyectosPSOC\UltraSonidos\Generated_Source\PSoC5\project.h</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ProyectosPSOC</v>
+<v>ProyectosPSOC\Design01</v>
+<v>ProyectosPSOC\ProyectoFinal</v>
+<v>ProyectosPSOC\ProyectoFinal\TopDesign</v>
+<v>ProyectosPSOC\ProyectoFinal\ProyectoFinal.cydwr</v>
+<v>ProyectosPSOC\ProyectoFinal\Header Files</v>
+<v>ProyectosPSOC\ProyectoFinal\Source Files</v>
+<v>ProyectosPSOC\ProyectoFinal\Source Files\main.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC3</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC\ADC.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC\ADC.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC\ADC_INT.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC\ADC_PM.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_AMux</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_AMux\ADC_AMux.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_AMux\ADC_AMux.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_Ext_CP_Clk</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_IRQ</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_theACLK</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.c</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.h</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Clock_1</v>
+<v>ProyectosPSOC\ProyectoFinal\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="ProyectosPSOC">
+<ExpandedNodeIds>
+<v>ProyectosPSOC</v>
+<v>ProyectosPSOC\Design01</v>
+<v>ProyectosPSOC\Design01\TopDesign</v>
+<v>ProyectosPSOC\Design01\TopDesign\TopDesign.cysch</v>
+<v>ProyectosPSOC\ProyectoFinal</v>
+<v>ProyectosPSOC\ProyectoFinal\TopDesign</v>
+<v>ProyectosPSOC\ProyectoFinal\TopDesign\TopDesign.cysch</v>
+<v>ProyectosPSOC\ServoMotores</v>
+<v>ProyectosPSOC\ServoMotores\TopDesign</v>
+<v>ProyectosPSOC\ServoMotores\TopDesign\TopDesign.cysch</v>
+<v>ProyectosPSOC\UltraSonidos</v>
+<v>ProyectosPSOC\UltraSonidos\TopDesign</v>
+<v>ProyectosPSOC\UltraSonidos\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ProyectosPSOC</v>
+<v>ProyectosPSOC\Design01</v>
+<v>ProyectosPSOC\Design01\TopDesign</v>
+<v>ProyectosPSOC\Design01\TopDesign\TopDesign.cysch</v>
+<v>ProyectosPSOC\ProyectoFinal</v>
+<v>ProyectosPSOC\ProyectoFinal\TopDesign</v>
+<v>ProyectosPSOC\ProyectoFinal\TopDesign\TopDesign.cysch</v>
+<v>ProyectosPSOC\ServoMotores</v>
+<v>ProyectosPSOC\ServoMotores\TopDesign</v>
+<v>ProyectosPSOC\ServoMotores\TopDesign\TopDesign.cysch</v>
+<v>ProyectosPSOC\UltraSonidos</v>
+<v>ProyectosPSOC\UltraSonidos\TopDesign</v>
+<v>ProyectosPSOC\UltraSonidos\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ProyectosPSOC</v>
+<v>ProyectosPSOC\Design01</v>
+<v>ProyectosPSOC\Design01\CortexM3</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\Entrada.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_Char_1.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_Char_1_LCDPort.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_Char_1_PM.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Design01.elf</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Design01.hex</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Design01.map</v>
+<v>ProyectosPSOC\Design01\Design01.gpdsc</v>
+<v>ProyectosPSOC\Design01\Design01.rpt</v>
+<v>ProyectosPSOC\Design01\Design01_timing.html</v>
+<v>ProyectosPSOC\ProyectoFinal</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_AMux.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Ext_CP_Clk.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_INT.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_IRQ.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_PM.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_theACLK.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\DistOutHCSRO4.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\foto.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_PM.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\pot.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\TimeDistMeas.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\TimeDistMeas_PM.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\toma.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\Trig.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\Triggen.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\Listing Files\Triggen_PM.lst</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\ProyectoFinal.elf</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\ProyectoFinal.hex</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493\Debug\ProyectoFinal.map</v>
+<v>ProyectosPSOC\ProyectoFinal\ProyectoFinal.gpdsc</v>
+<v>ProyectosPSOC\ProyectoFinal\ProyectoFinal.rpt</v>
+<v>ProyectosPSOC\ProyectoFinal\ProyectoFinal_timing.html</v>
+<v>ProyectosPSOC\ServoMotores</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_AMux.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Ext_CP_Clk.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_INT.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_IRQ.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_PM.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_theACLK.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_PM.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\pot.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\Pulse.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_PM.lst</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\ServoMotores.elf</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\ServoMotores.hex</v>
+<v>ProyectosPSOC\ServoMotores\CortexM3\ARM_GCC_493\Debug\ServoMotores.map</v>
+<v>ProyectosPSOC\ServoMotores\ServoMotores.gpdsc</v>
+<v>ProyectosPSOC\ServoMotores\ServoMotores.rpt</v>
+<v>ProyectosPSOC\ServoMotores\ServoMotores_timing.html</v>
+<v>ProyectosPSOC\UltraSonidos</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\DistOutHCSRO4.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_PM.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\TimeDistMeas.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\TimeDistMeas_PM.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\Trig.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\Triggen.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\Listing Files\Triggen_PM.lst</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\UltraSonidos.elf</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\UltraSonidos.hex</v>
+<v>ProyectosPSOC\UltraSonidos\CortexM3\ARM_GCC_493\Debug\UltraSonidos.map</v>
+<v>ProyectosPSOC\UltraSonidos\UltraSonidos.gpdsc</v>
+<v>ProyectosPSOC\UltraSonidos\UltraSonidos.rpt</v>
+<v>ProyectosPSOC\UltraSonidos\UltraSonidos_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ProyectosPSOC</v>
+<v>ProyectosPSOC\Design01</v>
+<v>ProyectosPSOC\Design01\CortexM3</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\Entrada.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_Char_1.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_Char_1_LCDPort.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\LCD_Char_1_PM.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Design01.elf</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Design01.hex</v>
+<v>ProyectosPSOC\Design01\CortexM3\ARM_GCC_493\Debug\Design01.map</v>
+<v>ProyectosPSOC\Design01\Design01.gpdsc</v>
+<v>ProyectosPSOC\Design01\Design01.rpt</v>
+<v>ProyectosPSOC\Design01\Design01_timing.html</v>
+<v>ProyectosPSOC\ProyectoFinal</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3</v>
+<v>ProyectosPSOC\ProyectoFinal\CortexM3\ARM_GCC_493</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ProyectosPSOC</v>
+<v>ProyectosPSOC\Design01</v>
+<v>ProyectosPSOC\Design01\PSoC 5 Architecture TRM</v>
+<v>ProyectosPSOC\Design01\CY8C58LP Family Datasheet</v>
+<v>ProyectosPSOC\Design01\System Reference Guides</v>
+<v>ProyectosPSOC\ProyectoFinal</v>
+<v>ProyectosPSOC\ProyectoFinal\PSoC 5 Architecture TRM</v>
+<v>ProyectosPSOC\ProyectoFinal\CY8C58LP Family Datasheet</v>
+<v>ProyectosPSOC\ProyectoFinal\System Reference Guides</v>
+<v>ProyectosPSOC\ServoMotores</v>
+<v>ProyectosPSOC\ServoMotores\PSoC 5 Architecture TRM</v>
+<v>ProyectosPSOC\ServoMotores\CY8C58LP Family Datasheet</v>
+<v>ProyectosPSOC\ServoMotores\System Reference Guides</v>
+<v>ProyectosPSOC\UltraSonidos</v>
+<v>ProyectosPSOC\UltraSonidos\PSoC 5 Architecture TRM</v>
+<v>ProyectosPSOC\UltraSonidos\CY8C58LP Family Datasheet</v>
+<v>ProyectosPSOC\UltraSonidos\System Reference Guides</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ProyectosPSOC</v>
+<v>ProyectosPSOC\Design01</v>
+<v>ProyectosPSOC\Design01\PSoC 5 Architecture TRM</v>
+<v>ProyectosPSOC\Design01\CY8C58LP Family Datasheet</v>
+<v>ProyectosPSOC\Design01\System Reference Guides</v>
+<v>ProyectosPSOC\ProyectoFinal</v>
+<v>ProyectosPSOC\ProyectoFinal\PSoC 5 Architecture TRM</v>
+<v>ProyectosPSOC\ProyectoFinal\CY8C58LP Family Datasheet</v>
+<v>ProyectosPSOC\ProyectoFinal\System Reference Guides</v>
+<v>ProyectosPSOC\ServoMotores</v>
+<v>ProyectosPSOC\ServoMotores\PSoC 5 Architecture TRM</v>
+<v>ProyectosPSOC\ServoMotores\CY8C58LP Family Datasheet</v>
+<v>ProyectosPSOC\ServoMotores\System Reference Guides</v>
+<v>ProyectosPSOC\UltraSonidos</v>
+<v>ProyectosPSOC\UltraSonidos\PSoC 5 Architecture TRM</v>
+<v>ProyectosPSOC\UltraSonidos\CY8C58LP Family Datasheet</v>
+<v>ProyectosPSOC\UltraSonidos\System Reference Guides</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+<dataGuid v="6c335137-fa19-46ce-bc2d-2fbeb6d5f2a2">
+<CyGuid_70084457-cd6a-4593-9ed0-7f6eeb432dc2 type_name="CyDesigner.Common.ProjMgmt.GUI.CyDependenciesCustomData" version="1">
+<dictName v=".\ProyectoFinal.cydsn\ProyectoFinal.cyprj">
+<listName>
+<v>.\ServoMotores.cydsn\ServoMotores.cyprj</v>
+<v>.\UltraSonidos.cydsn\UltraSonidos.cyprj</v>
+</listName>
+</dictName>
+</CyGuid_70084457-cd6a-4593-9ed0-7f6eeb432dc2>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\ProyectoFinal.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\ProyectoFinal.cydsn\main.c" />
+<name v=".\ProyectoFinal.cydsn\ProyectoFinal.cydwr" />
+</OpenDocs>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

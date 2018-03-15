@@ -1,0 +1,7 @@
+--------------- Rebuild Started: 09/17/2016 15:44:48 Project: main.c, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\main.c -o .\CortexM3\ARM_GCC_493\Debug\main.o
+.\main.c: In function 'get_width':
+.\main.c:187:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+--------------- Rebuild Succeeded: 09/17/2016 15:44:48 ---------------

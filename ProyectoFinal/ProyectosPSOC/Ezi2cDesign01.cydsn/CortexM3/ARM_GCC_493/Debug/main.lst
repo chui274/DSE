@@ -1,0 +1,1117 @@
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.startup.main,"ax",%progbits
+  19              		.align	2
+  20              		.global	main
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	main, %function
+  24              	main:
+  25              	.LFB63:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** /*******************************************************************************
+   2:.\main.c      **** * File Name: main.c
+   3:.\main.c      **** *
+   4:.\main.c      **** * Version: 3.20
+   5:.\main.c      **** *
+   6:.\main.c      **** * Description:
+   7:.\main.c      **** *  This is source code for the datasheet example of the EZI2C and I2C
+   8:.\main.c      **** *  components.
+   9:.\main.c      **** *
+  10:.\main.c      **** *  The project explains the usage of EZI2C slave and I2C master components. In
+  11:.\main.c      **** *  the project when switch SW1 is pressed the I2C master writes a corresponding
+  12:.\main.c      **** *  message to the EZI2C slave and when switch SW2 is pressed the I2C master will
+  13:.\main.c      **** *  read back the data from the slave. Both the written and read back data are
+  14:.\main.c      **** *  displayed on LCD if both write and read operations happens successfully.
+  15:.\main.c      **** *
+  16:.\main.c      **** *  Display legend:
+  17:.\main.c      **** *   First string:
+  18:.\main.c      **** *    WR: xx xx xx xx 
+  19:.\main.c      **** *       WR:- Data being written by I2C Mater to EZI2C.
+  20:.\main.c      **** *
+  21:.\main.c      **** *   Second string:
+  22:.\main.c      **** *    RD: xx xx AA BB
+  23:.\main.c      **** *       RD:- Data being read by I2C Mater from EZI2C.
+  24:.\main.c      **** *
+  25:.\main.c      **** ********************************************************************************
+  26:.\main.c      **** * Copyright 2013, Cypress Semiconductor Corporation. All rights reserved.
+  27:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation and is protected
+  28:.\main.c      **** * by and subject to worldwide patent and copyright laws and treaties.
+  29:.\main.c      **** * Therefore, you may use this software only as provided in the license agreement
+  30:.\main.c      **** * accompanying the software package from which you obtained this software.
+  31:.\main.c      **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 2
+
+
+  32:.\main.c      **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  33:.\main.c      **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  34:.\main.c      **** *******************************************************************************/
+  35:.\main.c      **** #include <project.h>
+  36:.\main.c      **** #include <device.h>
+  37:.\main.c      **** 
+  38:.\main.c      **** /* Slave address of the EZI2C */
+  39:.\main.c      **** #define EZI2C_SLAVE_ADDR        (0x08u)
+  40:.\main.c      **** #define BUFFER_SIZE             (0x04u)
+  41:.\main.c      **** #define BUFFER_RW_AREA_SIZE     (0x02u)
+  42:.\main.c      **** 
+  43:.\main.c      **** /* Denotes the offset inside the EZI2C buffer */
+  44:.\main.c      **** #define SLAVE_ADDR_SIZE         (0x01u)
+  45:.\main.c      **** 
+  46:.\main.c      **** #define ACTION_SELECT_NONE      (0x00u)     /* Do nothing       */
+  47:.\main.c      **** #define ACTION_SELECT_WRITE     (0x01u)     /* Write to EZI2C   */
+  48:.\main.c      **** #define ACTION_SELECT_READ      (0x02u)     /* Read from EZI2C  */
+  49:.\main.c      **** 
+  50:.\main.c      **** /* Desing interrupt handlers for SW1 and SW2 event */
+  51:.\main.c      **** CY_ISR_PROTO(ISR_WriteSW1_Interrupt);
+  52:.\main.c      **** CY_ISR_PROTO(ISR_ReadSW2_Interrupt);
+  53:.\main.c      **** 
+  54:.\main.c      **** /* EZI2C buffer */
+  55:.\main.c      **** uint8   ezi2cBuffer[BUFFER_SIZE];
+  56:.\main.c      **** 
+  57:.\main.c      **** /* I2C buffer with the data read from EZI2C */
+  58:.\main.c      **** uint8   i2cBufferRead[BUFFER_SIZE];
+  59:.\main.c      **** 
+  60:.\main.c      **** /* I2C buffer with the data to be written to EZI2C */
+  61:.\main.c      **** uint8   i2cBufferWrite[SLAVE_ADDR_SIZE + BUFFER_SIZE];
+  62:.\main.c      **** 
+  63:.\main.c      **** /* Initialize action variable */
+  64:.\main.c      **** volatile uint8 actionSelect = ACTION_SELECT_NONE;
+  65:.\main.c      ****  uint8 MyArray[512];
+  66:.\main.c      **** 
+  67:.\main.c      **** /*******************************************************************************
+  68:.\main.c      **** * Function Name: main
+  69:.\main.c      **** ********************************************************************************
+  70:.\main.c      **** *
+  71:.\main.c      **** * Summary:
+  72:.\main.c      **** *  Main function performs following functions:
+  73:.\main.c      **** *   1. Enables global interrupts
+  74:.\main.c      **** *   2. Starts Character LCD and print usage info
+  75:.\main.c      **** *   3. Starts EZI2C and I2C Master components
+  76:.\main.c      **** *   4. Enable I2C master interrupts
+  77:.\main.c      **** *   5. Sets initial value to the read only area in the EZI2C buffer
+  78:.\main.c      **** *   6. Configures EZI2C buffer
+  79:.\main.c      **** *   7. In the infinite loop checks for the 'actionSelect' variable and execute
+  80:.\main.c      **** *      selected action (write to the ECI2C(SW1 was pressed) or read from it (SW2
+  81:.\main.c      **** *      was pressed))
+  82:.\main.c      **** *
+  83:.\main.c      **** *   Writes to the EZI2C (SW1 was pressed):
+  84:.\main.c      **** *   8. Clears action variable ('actionSelect')
+  85:.\main.c      **** *   9. Increments I2C write buffer values.
+  86:.\main.c      **** *   10. Clears I2C Master status, writes data to the slave device (EZI2C) and
+  87:.\main.c      **** *       waits write to be completed.
+  88:.\main.c      **** *   11. Displays data to be written to the EZI2C.
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 3
+
+
+  89:.\main.c      **** *
+  90:.\main.c      **** *   Reads from the EZI2C (SW2 was pressed):
+  91:.\main.c      **** *   12. Clears action variable ('actionSelect')
+  92:.\main.c      **** *   13. Clears I2C Master status, reads data from the slave device (EZI2C) and
+  93:.\main.c      **** *       waits read operation to be completed.
+  94:.\main.c      **** *   14. Displays data read from the EZI2C buffer.
+  95:.\main.c      **** *
+  96:.\main.c      **** *   The pin interrupt request bit is cleared and corresponding action is set to
+  97:.\main.c      **** *   'actionSelect' in the ISR_Read.c  and ISR_Write.c files.
+  98:.\main.c      **** *
+  99:.\main.c      **** * Parameters:
+ 100:.\main.c      **** *  None
+ 101:.\main.c      **** *
+ 102:.\main.c      **** * Return:
+ 103:.\main.c      **** *  None
+ 104:.\main.c      **** *
+ 105:.\main.c      **** *******************************************************************************/
+ 106:.\main.c      **** int main()
+ 107:.\main.c      **** {
+  27              		.loc 1 107 0
+  28              		.cfi_startproc
+  29              		@ Volatile: function does not return.
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+ 108:.\main.c      ****     //uint8 i;
+ 109:.\main.c      **** 
+ 110:.\main.c      ****     /* Start Character LCD and display usage info */
+ 111:.\main.c      ****     LCD_Start();
+  36              		.loc 1 111 0
+  37 0002 FFF7FEFF 		bl	LCD_Start
+  38              	.LVL0:
+ 112:.\main.c      ****     LCD_Position(0u, 0u);
+  39              		.loc 1 112 0
+  40 0006 0020     		movs	r0, #0
+  41 0008 0146     		mov	r1, r0
+  42 000a FFF7FEFF 		bl	LCD_Position
+  43              	.LVL1:
+ 113:.\main.c      ****     LCD_PrintString("SW1 to Write");
+  44              		.loc 1 113 0
+  45 000e 0D48     		ldr	r0, .L5
+  46 0010 FFF7FEFF 		bl	LCD_PrintString
+  47              	.LVL2:
+ 114:.\main.c      ****     LCD_Position(1u, 0u);
+  48              		.loc 1 114 0
+  49 0014 0021     		movs	r1, #0
+  50 0016 0120     		movs	r0, #1
+  51 0018 FFF7FEFF 		bl	LCD_Position
+  52              	.LVL3:
+ 115:.\main.c      ****     LCD_PrintString("SW2 to Read ");
+  53              		.loc 1 115 0
+  54 001c 0A48     		ldr	r0, .L5+4
+  55 001e FFF7FEFF 		bl	LCD_PrintString
+  56              	.LVL4:
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 4
+
+
+ 116:.\main.c      **** 
+ 117:.\main.c      ****     /* Start I2C UDB Master*/
+ 118:.\main.c      **** 
+ 119:.\main.c      ****     /* Start EZI2C (customizer's settings will be applied) */
+ 120:.\main.c      ****     EZI2C_Start();
+  57              		.loc 1 120 0
+  58 0022 FFF7FEFF 		bl	EZI2C_Start
+  59              	.LVL5:
+ 121:.\main.c      **** 
+ 122:.\main.c      ****     /* Start ISRs */
+ 123:.\main.c      **** 
+ 124:.\main.c      **** 
+ 125:.\main.c      ****     /* Enable global interrupts */
+ 126:.\main.c      ****     CyGlobalIntEnable;
+  60              		.loc 1 126 0
+  61              	@ 126 ".\main.c" 1
+  62 0026 62B6     		CPSIE   i
+  63              	@ 0 "" 2
+ 127:.\main.c      **** 
+ 128:.\main.c      ****     /* Initialize EZI2C buffer's read only data */
+ 129:.\main.c      ****     ezi2cBuffer[BUFFER_RW_AREA_SIZE     ] = 0xAAu;
+  64              		.loc 1 129 0
+  65              		.thumb
+  66 0028 084B     		ldr	r3, .L5+8
+ 130:.\main.c      ****     ezi2cBuffer[BUFFER_RW_AREA_SIZE + 1u] = 0xBBu;
+ 131:.\main.c      **** 
+ 132:.\main.c      ****     /***************************************************************************
+ 133:.\main.c      ****     * The first parameter sets the size of the exposed memory to the I2C
+ 134:.\main.c      ****     * interface. In this case, it is the entire array. The second parameter sets
+ 135:.\main.c      ****     * the boundary between the read/write and read only areas by setting the
+ 136:.\main.c      ****     * number of bytes in the read/write area. The read/write area is first,
+ 137:.\main.c      ****     * followed by the read only area. In this case, only the first
+ 138:.\main.c      ****     * BUFFER_RW_AREA_SIZE bytes may be written, but all bytes may be read by the
+ 139:.\main.c      ****     * I2C master. The third parameter is a pointer to the data.
+ 140:.\main.c      ****     ***************************************************************************/
+ 141:.\main.c      ****     EZI2C_SetBuffer1(sizeof(MyArray), 512, (void *) MyArray);
+  67              		.loc 1 141 0
+  68 002a 4FF40070 		mov	r0, #512
+ 129:.\main.c      ****     ezi2cBuffer[BUFFER_RW_AREA_SIZE + 1u] = 0xBBu;
+  69              		.loc 1 129 0
+  70 002e AA25     		movs	r5, #170
+ 130:.\main.c      ****     ezi2cBuffer[BUFFER_RW_AREA_SIZE + 1u] = 0xBBu;
+  71              		.loc 1 130 0
+  72 0030 BB24     		movs	r4, #187
+  73              		.loc 1 141 0
+  74 0032 0146     		mov	r1, r0
+  75 0034 064A     		ldr	r2, .L5+12
+ 129:.\main.c      ****     ezi2cBuffer[BUFFER_RW_AREA_SIZE + 1u] = 0xBBu;
+  76              		.loc 1 129 0
+  77 0036 9D70     		strb	r5, [r3, #2]
+ 130:.\main.c      ****     ezi2cBuffer[BUFFER_RW_AREA_SIZE + 1u] = 0xBBu;
+  78              		.loc 1 130 0
+  79 0038 DC70     		strb	r4, [r3, #3]
+  80              		.loc 1 141 0
+  81 003a FFF7FEFF 		bl	EZI2C_SetBuffer1
+  82              	.LVL6:
+  83              	.L2:
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 5
+
+
+ 142:.\main.c      **** 
+ 143:.\main.c      ****     for(;;)
+ 144:.\main.c      ****     {
+ 145:.\main.c      ****         if((EZI2C_GetActivity()&EZI2C_STATUS_WRITE1)==1){
+  84              		.loc 1 145 0
+  85 003e FFF7FEFF 		bl	EZI2C_GetActivity
+  86              	.LVL7:
+ 146:.\main.c      ****             LCD_Position(0,0);
+ 147:.\main.c      ****             LCD_PrintString("Esta escribiendo");
+ 148:.\main.c      ****             MyArray[0]=5;
+ 149:.\main.c      ****             if((EZI2C_GetActivity()&EZI2C_STATUS_READ1)==1){
+ 150:.\main.c      ****                 LCD_Position(1,0);
+ 151:.\main.c      ****                 LCD_PrintString("Esta leyendo");
+ 152:.\main.c      ****             }
+ 153:.\main.c      ****         }
+ 154:.\main.c      ****     }
+  87              		.loc 1 154 0
+  88 0042 FCE7     		b	.L2
+  89              	.L6:
+  90              		.align	2
+  91              	.L5:
+  92 0044 00000000 		.word	.LC0
+  93 0048 10000000 		.word	.LC1
+  94 004c 00000000 		.word	ezi2cBuffer
+  95 0050 00000000 		.word	MyArray
+  96              		.cfi_endproc
+  97              	.LFE63:
+  98              		.size	main, .-main
+  99              		.comm	MyArray,512,4
+ 100              		.global	actionSelect
+ 101              		.comm	i2cBufferWrite,5,4
+ 102              		.comm	i2cBufferRead,4,4
+ 103              		.comm	ezi2cBuffer,4,4
+ 104              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 105              		.align	2
+ 106              	.LC0:
+ 107 0000 53573120 		.ascii	"SW1 to Write\000"
+ 107      746F2057 
+ 107      72697465 
+ 107      00
+ 108 000d 000000   		.space	3
+ 109              	.LC1:
+ 110 0010 53573220 		.ascii	"SW2 to Read \000"
+ 110      746F2052 
+ 110      65616420 
+ 110      00
+ 111 001d 000000   		.bss
+ 112              		.type	actionSelect, %object
+ 113              		.size	actionSelect, 1
+ 114              	actionSelect:
+ 115 0000 00       		.space	1
+ 116              		.text
+ 117              	.Letext0:
+ 118              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 119              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 120              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 121              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 6
+
+
+ 122              		.file 6 "Generated_Source\\PSoC5/LCD.h"
+ 123              		.file 7 "Generated_Source\\PSoC5/EZI2C.h"
+ 124              		.section	.debug_info,"",%progbits
+ 125              	.Ldebug_info0:
+ 126 0000 7E020000 		.4byte	0x27e
+ 127 0004 0400     		.2byte	0x4
+ 128 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 129 000a 04       		.byte	0x4
+ 130 000b 01       		.uleb128 0x1
+ 131 000c 95000000 		.4byte	.LASF29
+ 132 0010 01       		.byte	0x1
+ 133 0011 5F000000 		.4byte	.LASF30
+ 134 0015 00000000 		.4byte	.LASF31
+ 135 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 136 001d 00000000 		.4byte	0
+ 137 0021 00000000 		.4byte	.Ldebug_line0
+ 138 0025 02       		.uleb128 0x2
+ 139 0026 01       		.byte	0x1
+ 140 0027 06       		.byte	0x6
+ 141 0028 37020000 		.4byte	.LASF0
+ 142 002c 02       		.uleb128 0x2
+ 143 002d 01       		.byte	0x1
+ 144 002e 08       		.byte	0x8
+ 145 002f 87000000 		.4byte	.LASF1
+ 146 0033 02       		.uleb128 0x2
+ 147 0034 02       		.byte	0x2
+ 148 0035 05       		.byte	0x5
+ 149 0036 10020000 		.4byte	.LASF2
+ 150 003a 02       		.uleb128 0x2
+ 151 003b 02       		.byte	0x2
+ 152 003c 07       		.byte	0x7
+ 153 003d 3B010000 		.4byte	.LASF3
+ 154 0041 03       		.uleb128 0x3
+ 155 0042 4F000000 		.4byte	.LASF9
+ 156 0046 02       		.byte	0x2
+ 157 0047 3F       		.byte	0x3f
+ 158 0048 4C000000 		.4byte	0x4c
+ 159 004c 02       		.uleb128 0x2
+ 160 004d 04       		.byte	0x4
+ 161 004e 05       		.byte	0x5
+ 162 004f 26020000 		.4byte	.LASF4
+ 163 0053 02       		.uleb128 0x2
+ 164 0054 04       		.byte	0x4
+ 165 0055 07       		.byte	0x7
+ 166 0056 29010000 		.4byte	.LASF5
+ 167 005a 02       		.uleb128 0x2
+ 168 005b 08       		.byte	0x8
+ 169 005c 05       		.byte	0x5
+ 170 005d DF010000 		.4byte	.LASF6
+ 171 0061 02       		.uleb128 0x2
+ 172 0062 08       		.byte	0x8
+ 173 0063 07       		.byte	0x7
+ 174 0064 AA010000 		.4byte	.LASF7
+ 175 0068 04       		.uleb128 0x4
+ 176 0069 04       		.byte	0x4
+ 177 006a 05       		.byte	0x5
+ 178 006b 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 7
+
+
+ 179 006f 02       		.uleb128 0x2
+ 180 0070 04       		.byte	0x4
+ 181 0071 07       		.byte	0x7
+ 182 0072 9D010000 		.4byte	.LASF8
+ 183 0076 03       		.uleb128 0x3
+ 184 0077 CE010000 		.4byte	.LASF10
+ 185 007b 03       		.byte	0x3
+ 186 007c 2C       		.byte	0x2c
+ 187 007d 41000000 		.4byte	0x41
+ 188 0081 05       		.uleb128 0x5
+ 189 0082 59000000 		.4byte	.LASF11
+ 190 0086 04       		.byte	0x4
+ 191 0087 9201     		.2byte	0x192
+ 192 0089 2C000000 		.4byte	0x2c
+ 193 008d 05       		.uleb128 0x5
+ 194 008e 96010000 		.4byte	.LASF12
+ 195 0092 04       		.byte	0x4
+ 196 0093 9301     		.2byte	0x193
+ 197 0095 3A000000 		.4byte	0x3a
+ 198 0099 02       		.uleb128 0x2
+ 199 009a 04       		.byte	0x4
+ 200 009b 04       		.byte	0x4
+ 201 009c 68000000 		.4byte	.LASF13
+ 202 00a0 02       		.uleb128 0x2
+ 203 00a1 08       		.byte	0x8
+ 204 00a2 04       		.byte	0x4
+ 205 00a3 69010000 		.4byte	.LASF14
+ 206 00a7 05       		.uleb128 0x5
+ 207 00a8 23010000 		.4byte	.LASF15
+ 208 00ac 04       		.byte	0x4
+ 209 00ad A301     		.2byte	0x1a3
+ 210 00af B3000000 		.4byte	0xb3
+ 211 00b3 02       		.uleb128 0x2
+ 212 00b4 01       		.byte	0x1
+ 213 00b5 08       		.byte	0x8
+ 214 00b6 ED010000 		.4byte	.LASF16
+ 215 00ba 06       		.uleb128 0x6
+ 216 00bb 81000000 		.4byte	0x81
+ 217 00bf 02       		.uleb128 0x2
+ 218 00c0 04       		.byte	0x4
+ 219 00c1 07       		.byte	0x7
+ 220 00c2 D6010000 		.4byte	.LASF17
+ 221 00c6 07       		.uleb128 0x7
+ 222 00c7 81000000 		.4byte	0x81
+ 223 00cb D6000000 		.4byte	0xd6
+ 224 00cf 08       		.uleb128 0x8
+ 225 00d0 BF000000 		.4byte	0xbf
+ 226 00d4 03       		.byte	0x3
+ 227 00d5 00       		.byte	0
+ 228 00d6 09       		.uleb128 0x9
+ 229 00d7 70010000 		.4byte	.LASF32
+ 230 00db 01       		.byte	0x1
+ 231 00dc 6A       		.byte	0x6a
+ 232 00dd 68000000 		.4byte	0x68
+ 233 00e1 00000000 		.4byte	.LFB63
+ 234 00e5 54000000 		.4byte	.LFE63-.LFB63
+ 235 00e9 01       		.uleb128 0x1
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 8
+
+
+ 236 00ea 9C       		.byte	0x9c
+ 237 00eb 8E010000 		.4byte	0x18e
+ 238 00ef 0A       		.uleb128 0xa
+ 239 00f0 06000000 		.4byte	.LVL0
+ 240 00f4 15020000 		.4byte	0x215
+ 241 00f8 0B       		.uleb128 0xb
+ 242 00f9 0E000000 		.4byte	.LVL1
+ 243 00fd 1C020000 		.4byte	0x21c
+ 244 0101 10010000 		.4byte	0x110
+ 245 0105 0C       		.uleb128 0xc
+ 246 0106 01       		.uleb128 0x1
+ 247 0107 51       		.byte	0x51
+ 248 0108 01       		.uleb128 0x1
+ 249 0109 30       		.byte	0x30
+ 250 010a 0C       		.uleb128 0xc
+ 251 010b 01       		.uleb128 0x1
+ 252 010c 50       		.byte	0x50
+ 253 010d 01       		.uleb128 0x1
+ 254 010e 30       		.byte	0x30
+ 255 010f 00       		.byte	0
+ 256 0110 0B       		.uleb128 0xb
+ 257 0111 14000000 		.4byte	.LVL2
+ 258 0115 32020000 		.4byte	0x232
+ 259 0119 27010000 		.4byte	0x127
+ 260 011d 0C       		.uleb128 0xc
+ 261 011e 01       		.uleb128 0x1
+ 262 011f 50       		.byte	0x50
+ 263 0120 05       		.uleb128 0x5
+ 264 0121 03       		.byte	0x3
+ 265 0122 00000000 		.4byte	.LC0
+ 266 0126 00       		.byte	0
+ 267 0127 0B       		.uleb128 0xb
+ 268 0128 1C000000 		.4byte	.LVL3
+ 269 012c 1C020000 		.4byte	0x21c
+ 270 0130 3F010000 		.4byte	0x13f
+ 271 0134 0C       		.uleb128 0xc
+ 272 0135 01       		.uleb128 0x1
+ 273 0136 51       		.byte	0x51
+ 274 0137 01       		.uleb128 0x1
+ 275 0138 30       		.byte	0x30
+ 276 0139 0C       		.uleb128 0xc
+ 277 013a 01       		.uleb128 0x1
+ 278 013b 50       		.byte	0x50
+ 279 013c 01       		.uleb128 0x1
+ 280 013d 31       		.byte	0x31
+ 281 013e 00       		.byte	0
+ 282 013f 0B       		.uleb128 0xb
+ 283 0140 22000000 		.4byte	.LVL4
+ 284 0144 32020000 		.4byte	0x232
+ 285 0148 56010000 		.4byte	0x156
+ 286 014c 0C       		.uleb128 0xc
+ 287 014d 01       		.uleb128 0x1
+ 288 014e 50       		.byte	0x50
+ 289 014f 05       		.uleb128 0x5
+ 290 0150 03       		.byte	0x3
+ 291 0151 10000000 		.4byte	.LC1
+ 292 0155 00       		.byte	0
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 9
+
+
+ 293 0156 0A       		.uleb128 0xa
+ 294 0157 26000000 		.4byte	.LVL5
+ 295 015b 4E020000 		.4byte	0x24e
+ 296 015f 0B       		.uleb128 0xb
+ 297 0160 3E000000 		.4byte	.LVL6
+ 298 0164 55020000 		.4byte	0x255
+ 299 0168 84010000 		.4byte	0x184
+ 300 016c 0C       		.uleb128 0xc
+ 301 016d 01       		.uleb128 0x1
+ 302 016e 52       		.byte	0x52
+ 303 016f 05       		.uleb128 0x5
+ 304 0170 03       		.byte	0x3
+ 305 0171 00000000 		.4byte	MyArray
+ 306 0175 0C       		.uleb128 0xc
+ 307 0176 01       		.uleb128 0x1
+ 308 0177 51       		.byte	0x51
+ 309 0178 03       		.uleb128 0x3
+ 310 0179 0A       		.byte	0xa
+ 311 017a 0002     		.2byte	0x200
+ 312 017c 0C       		.uleb128 0xc
+ 313 017d 01       		.uleb128 0x1
+ 314 017e 50       		.byte	0x50
+ 315 017f 03       		.uleb128 0x3
+ 316 0180 0A       		.byte	0xa
+ 317 0181 0002     		.2byte	0x200
+ 318 0183 00       		.byte	0
+ 319 0184 0A       		.uleb128 0xa
+ 320 0185 42000000 		.4byte	.LVL7
+ 321 0189 76020000 		.4byte	0x276
+ 322 018d 00       		.byte	0
+ 323 018e 0D       		.uleb128 0xd
+ 324 018f 4E010000 		.4byte	.LASF18
+ 325 0193 05       		.byte	0x5
+ 326 0194 9606     		.2byte	0x696
+ 327 0196 9A010000 		.4byte	0x19a
+ 328 019a 06       		.uleb128 0x6
+ 329 019b 76000000 		.4byte	0x76
+ 330 019f 0E       		.uleb128 0xe
+ 331 01a0 F2010000 		.4byte	.LASF19
+ 332 01a4 01       		.byte	0x1
+ 333 01a5 37       		.byte	0x37
+ 334 01a6 C6000000 		.4byte	0xc6
+ 335 01aa 05       		.uleb128 0x5
+ 336 01ab 03       		.byte	0x3
+ 337 01ac 00000000 		.4byte	ezi2cBuffer
+ 338 01b0 0E       		.uleb128 0xe
+ 339 01b1 5B010000 		.4byte	.LASF20
+ 340 01b5 01       		.byte	0x1
+ 341 01b6 3A       		.byte	0x3a
+ 342 01b7 C6000000 		.4byte	0xc6
+ 343 01bb 05       		.uleb128 0x5
+ 344 01bc 03       		.byte	0x3
+ 345 01bd 00000000 		.4byte	i2cBufferRead
+ 346 01c1 07       		.uleb128 0x7
+ 347 01c2 81000000 		.4byte	0x81
+ 348 01c6 D1010000 		.4byte	0x1d1
+ 349 01ca 08       		.uleb128 0x8
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 10
+
+
+ 350 01cb BF000000 		.4byte	0xbf
+ 351 01cf 04       		.byte	0x4
+ 352 01d0 00       		.byte	0
+ 353 01d1 0E       		.uleb128 0xe
+ 354 01d2 78000000 		.4byte	.LASF21
+ 355 01d6 01       		.byte	0x1
+ 356 01d7 3D       		.byte	0x3d
+ 357 01d8 C1010000 		.4byte	0x1c1
+ 358 01dc 05       		.uleb128 0x5
+ 359 01dd 03       		.byte	0x3
+ 360 01de 00000000 		.4byte	i2cBufferWrite
+ 361 01e2 0E       		.uleb128 0xe
+ 362 01e3 43020000 		.4byte	.LASF22
+ 363 01e7 01       		.byte	0x1
+ 364 01e8 40       		.byte	0x40
+ 365 01e9 BA000000 		.4byte	0xba
+ 366 01ed 05       		.uleb128 0x5
+ 367 01ee 03       		.byte	0x3
+ 368 01ef 00000000 		.4byte	actionSelect
+ 369 01f3 07       		.uleb128 0x7
+ 370 01f4 81000000 		.4byte	0x81
+ 371 01f8 04020000 		.4byte	0x204
+ 372 01fc 0F       		.uleb128 0xf
+ 373 01fd BF000000 		.4byte	0xbf
+ 374 0201 FF01     		.2byte	0x1ff
+ 375 0203 00       		.byte	0
+ 376 0204 0E       		.uleb128 0xe
+ 377 0205 2F020000 		.4byte	.LASF23
+ 378 0209 01       		.byte	0x1
+ 379 020a 41       		.byte	0x41
+ 380 020b F3010000 		.4byte	0x1f3
+ 381 020f 05       		.uleb128 0x5
+ 382 0210 03       		.byte	0x3
+ 383 0211 00000000 		.4byte	MyArray
+ 384 0215 10       		.uleb128 0x10
+ 385 0216 6E000000 		.4byte	.LASF26
+ 386 021a 06       		.byte	0x6
+ 387 021b 38       		.byte	0x38
+ 388 021c 11       		.uleb128 0x11
+ 389 021d C1010000 		.4byte	.LASF24
+ 390 0221 06       		.byte	0x6
+ 391 0222 3D       		.byte	0x3d
+ 392 0223 32020000 		.4byte	0x232
+ 393 0227 12       		.uleb128 0x12
+ 394 0228 81000000 		.4byte	0x81
+ 395 022c 12       		.uleb128 0x12
+ 396 022d 81000000 		.4byte	0x81
+ 397 0231 00       		.byte	0
+ 398 0232 11       		.uleb128 0x11
+ 399 0233 86010000 		.4byte	.LASF25
+ 400 0237 06       		.byte	0x6
+ 401 0238 3C       		.byte	0x3c
+ 402 0239 43020000 		.4byte	0x243
+ 403 023d 12       		.uleb128 0x12
+ 404 023e 43020000 		.4byte	0x243
+ 405 0242 00       		.byte	0
+ 406 0243 13       		.uleb128 0x13
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 11
+
+
+ 407 0244 04       		.byte	0x4
+ 408 0245 49020000 		.4byte	0x249
+ 409 0249 14       		.uleb128 0x14
+ 410 024a A7000000 		.4byte	0xa7
+ 411 024e 10       		.uleb128 0x10
+ 412 024f 1A020000 		.4byte	.LASF27
+ 413 0253 07       		.byte	0x7
+ 414 0254 54       		.byte	0x54
+ 415 0255 11       		.uleb128 0x11
+ 416 0256 75010000 		.4byte	.LASF28
+ 417 025a 07       		.byte	0x7
+ 418 025b 63       		.byte	0x63
+ 419 025c 70020000 		.4byte	0x270
+ 420 0260 12       		.uleb128 0x12
+ 421 0261 8D000000 		.4byte	0x8d
+ 422 0265 12       		.uleb128 0x12
+ 423 0266 8D000000 		.4byte	0x8d
+ 424 026a 12       		.uleb128 0x12
+ 425 026b 70020000 		.4byte	0x270
+ 426 026f 00       		.byte	0
+ 427 0270 13       		.uleb128 0x13
+ 428 0271 04       		.byte	0x4
+ 429 0272 BA000000 		.4byte	0xba
+ 430 0276 15       		.uleb128 0x15
+ 431 0277 FE010000 		.4byte	.LASF33
+ 432 027b 07       		.byte	0x7
+ 433 027c 61       		.byte	0x61
+ 434 027d 81000000 		.4byte	0x81
+ 435 0281 00       		.byte	0
+ 436              		.section	.debug_abbrev,"",%progbits
+ 437              	.Ldebug_abbrev0:
+ 438 0000 01       		.uleb128 0x1
+ 439 0001 11       		.uleb128 0x11
+ 440 0002 01       		.byte	0x1
+ 441 0003 25       		.uleb128 0x25
+ 442 0004 0E       		.uleb128 0xe
+ 443 0005 13       		.uleb128 0x13
+ 444 0006 0B       		.uleb128 0xb
+ 445 0007 03       		.uleb128 0x3
+ 446 0008 0E       		.uleb128 0xe
+ 447 0009 1B       		.uleb128 0x1b
+ 448 000a 0E       		.uleb128 0xe
+ 449 000b 55       		.uleb128 0x55
+ 450 000c 17       		.uleb128 0x17
+ 451 000d 11       		.uleb128 0x11
+ 452 000e 01       		.uleb128 0x1
+ 453 000f 10       		.uleb128 0x10
+ 454 0010 17       		.uleb128 0x17
+ 455 0011 00       		.byte	0
+ 456 0012 00       		.byte	0
+ 457 0013 02       		.uleb128 0x2
+ 458 0014 24       		.uleb128 0x24
+ 459 0015 00       		.byte	0
+ 460 0016 0B       		.uleb128 0xb
+ 461 0017 0B       		.uleb128 0xb
+ 462 0018 3E       		.uleb128 0x3e
+ 463 0019 0B       		.uleb128 0xb
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 12
+
+
+ 464 001a 03       		.uleb128 0x3
+ 465 001b 0E       		.uleb128 0xe
+ 466 001c 00       		.byte	0
+ 467 001d 00       		.byte	0
+ 468 001e 03       		.uleb128 0x3
+ 469 001f 16       		.uleb128 0x16
+ 470 0020 00       		.byte	0
+ 471 0021 03       		.uleb128 0x3
+ 472 0022 0E       		.uleb128 0xe
+ 473 0023 3A       		.uleb128 0x3a
+ 474 0024 0B       		.uleb128 0xb
+ 475 0025 3B       		.uleb128 0x3b
+ 476 0026 0B       		.uleb128 0xb
+ 477 0027 49       		.uleb128 0x49
+ 478 0028 13       		.uleb128 0x13
+ 479 0029 00       		.byte	0
+ 480 002a 00       		.byte	0
+ 481 002b 04       		.uleb128 0x4
+ 482 002c 24       		.uleb128 0x24
+ 483 002d 00       		.byte	0
+ 484 002e 0B       		.uleb128 0xb
+ 485 002f 0B       		.uleb128 0xb
+ 486 0030 3E       		.uleb128 0x3e
+ 487 0031 0B       		.uleb128 0xb
+ 488 0032 03       		.uleb128 0x3
+ 489 0033 08       		.uleb128 0x8
+ 490 0034 00       		.byte	0
+ 491 0035 00       		.byte	0
+ 492 0036 05       		.uleb128 0x5
+ 493 0037 16       		.uleb128 0x16
+ 494 0038 00       		.byte	0
+ 495 0039 03       		.uleb128 0x3
+ 496 003a 0E       		.uleb128 0xe
+ 497 003b 3A       		.uleb128 0x3a
+ 498 003c 0B       		.uleb128 0xb
+ 499 003d 3B       		.uleb128 0x3b
+ 500 003e 05       		.uleb128 0x5
+ 501 003f 49       		.uleb128 0x49
+ 502 0040 13       		.uleb128 0x13
+ 503 0041 00       		.byte	0
+ 504 0042 00       		.byte	0
+ 505 0043 06       		.uleb128 0x6
+ 506 0044 35       		.uleb128 0x35
+ 507 0045 00       		.byte	0
+ 508 0046 49       		.uleb128 0x49
+ 509 0047 13       		.uleb128 0x13
+ 510 0048 00       		.byte	0
+ 511 0049 00       		.byte	0
+ 512 004a 07       		.uleb128 0x7
+ 513 004b 01       		.uleb128 0x1
+ 514 004c 01       		.byte	0x1
+ 515 004d 49       		.uleb128 0x49
+ 516 004e 13       		.uleb128 0x13
+ 517 004f 01       		.uleb128 0x1
+ 518 0050 13       		.uleb128 0x13
+ 519 0051 00       		.byte	0
+ 520 0052 00       		.byte	0
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 13
+
+
+ 521 0053 08       		.uleb128 0x8
+ 522 0054 21       		.uleb128 0x21
+ 523 0055 00       		.byte	0
+ 524 0056 49       		.uleb128 0x49
+ 525 0057 13       		.uleb128 0x13
+ 526 0058 2F       		.uleb128 0x2f
+ 527 0059 0B       		.uleb128 0xb
+ 528 005a 00       		.byte	0
+ 529 005b 00       		.byte	0
+ 530 005c 09       		.uleb128 0x9
+ 531 005d 2E       		.uleb128 0x2e
+ 532 005e 01       		.byte	0x1
+ 533 005f 3F       		.uleb128 0x3f
+ 534 0060 19       		.uleb128 0x19
+ 535 0061 03       		.uleb128 0x3
+ 536 0062 0E       		.uleb128 0xe
+ 537 0063 3A       		.uleb128 0x3a
+ 538 0064 0B       		.uleb128 0xb
+ 539 0065 3B       		.uleb128 0x3b
+ 540 0066 0B       		.uleb128 0xb
+ 541 0067 49       		.uleb128 0x49
+ 542 0068 13       		.uleb128 0x13
+ 543 0069 11       		.uleb128 0x11
+ 544 006a 01       		.uleb128 0x1
+ 545 006b 12       		.uleb128 0x12
+ 546 006c 06       		.uleb128 0x6
+ 547 006d 40       		.uleb128 0x40
+ 548 006e 18       		.uleb128 0x18
+ 549 006f 9742     		.uleb128 0x2117
+ 550 0071 19       		.uleb128 0x19
+ 551 0072 01       		.uleb128 0x1
+ 552 0073 13       		.uleb128 0x13
+ 553 0074 00       		.byte	0
+ 554 0075 00       		.byte	0
+ 555 0076 0A       		.uleb128 0xa
+ 556 0077 898201   		.uleb128 0x4109
+ 557 007a 00       		.byte	0
+ 558 007b 11       		.uleb128 0x11
+ 559 007c 01       		.uleb128 0x1
+ 560 007d 31       		.uleb128 0x31
+ 561 007e 13       		.uleb128 0x13
+ 562 007f 00       		.byte	0
+ 563 0080 00       		.byte	0
+ 564 0081 0B       		.uleb128 0xb
+ 565 0082 898201   		.uleb128 0x4109
+ 566 0085 01       		.byte	0x1
+ 567 0086 11       		.uleb128 0x11
+ 568 0087 01       		.uleb128 0x1
+ 569 0088 31       		.uleb128 0x31
+ 570 0089 13       		.uleb128 0x13
+ 571 008a 01       		.uleb128 0x1
+ 572 008b 13       		.uleb128 0x13
+ 573 008c 00       		.byte	0
+ 574 008d 00       		.byte	0
+ 575 008e 0C       		.uleb128 0xc
+ 576 008f 8A8201   		.uleb128 0x410a
+ 577 0092 00       		.byte	0
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 14
+
+
+ 578 0093 02       		.uleb128 0x2
+ 579 0094 18       		.uleb128 0x18
+ 580 0095 9142     		.uleb128 0x2111
+ 581 0097 18       		.uleb128 0x18
+ 582 0098 00       		.byte	0
+ 583 0099 00       		.byte	0
+ 584 009a 0D       		.uleb128 0xd
+ 585 009b 34       		.uleb128 0x34
+ 586 009c 00       		.byte	0
+ 587 009d 03       		.uleb128 0x3
+ 588 009e 0E       		.uleb128 0xe
+ 589 009f 3A       		.uleb128 0x3a
+ 590 00a0 0B       		.uleb128 0xb
+ 591 00a1 3B       		.uleb128 0x3b
+ 592 00a2 05       		.uleb128 0x5
+ 593 00a3 49       		.uleb128 0x49
+ 594 00a4 13       		.uleb128 0x13
+ 595 00a5 3F       		.uleb128 0x3f
+ 596 00a6 19       		.uleb128 0x19
+ 597 00a7 3C       		.uleb128 0x3c
+ 598 00a8 19       		.uleb128 0x19
+ 599 00a9 00       		.byte	0
+ 600 00aa 00       		.byte	0
+ 601 00ab 0E       		.uleb128 0xe
+ 602 00ac 34       		.uleb128 0x34
+ 603 00ad 00       		.byte	0
+ 604 00ae 03       		.uleb128 0x3
+ 605 00af 0E       		.uleb128 0xe
+ 606 00b0 3A       		.uleb128 0x3a
+ 607 00b1 0B       		.uleb128 0xb
+ 608 00b2 3B       		.uleb128 0x3b
+ 609 00b3 0B       		.uleb128 0xb
+ 610 00b4 49       		.uleb128 0x49
+ 611 00b5 13       		.uleb128 0x13
+ 612 00b6 3F       		.uleb128 0x3f
+ 613 00b7 19       		.uleb128 0x19
+ 614 00b8 02       		.uleb128 0x2
+ 615 00b9 18       		.uleb128 0x18
+ 616 00ba 00       		.byte	0
+ 617 00bb 00       		.byte	0
+ 618 00bc 0F       		.uleb128 0xf
+ 619 00bd 21       		.uleb128 0x21
+ 620 00be 00       		.byte	0
+ 621 00bf 49       		.uleb128 0x49
+ 622 00c0 13       		.uleb128 0x13
+ 623 00c1 2F       		.uleb128 0x2f
+ 624 00c2 05       		.uleb128 0x5
+ 625 00c3 00       		.byte	0
+ 626 00c4 00       		.byte	0
+ 627 00c5 10       		.uleb128 0x10
+ 628 00c6 2E       		.uleb128 0x2e
+ 629 00c7 00       		.byte	0
+ 630 00c8 3F       		.uleb128 0x3f
+ 631 00c9 19       		.uleb128 0x19
+ 632 00ca 03       		.uleb128 0x3
+ 633 00cb 0E       		.uleb128 0xe
+ 634 00cc 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 15
+
+
+ 635 00cd 0B       		.uleb128 0xb
+ 636 00ce 3B       		.uleb128 0x3b
+ 637 00cf 0B       		.uleb128 0xb
+ 638 00d0 27       		.uleb128 0x27
+ 639 00d1 19       		.uleb128 0x19
+ 640 00d2 3C       		.uleb128 0x3c
+ 641 00d3 19       		.uleb128 0x19
+ 642 00d4 00       		.byte	0
+ 643 00d5 00       		.byte	0
+ 644 00d6 11       		.uleb128 0x11
+ 645 00d7 2E       		.uleb128 0x2e
+ 646 00d8 01       		.byte	0x1
+ 647 00d9 3F       		.uleb128 0x3f
+ 648 00da 19       		.uleb128 0x19
+ 649 00db 03       		.uleb128 0x3
+ 650 00dc 0E       		.uleb128 0xe
+ 651 00dd 3A       		.uleb128 0x3a
+ 652 00de 0B       		.uleb128 0xb
+ 653 00df 3B       		.uleb128 0x3b
+ 654 00e0 0B       		.uleb128 0xb
+ 655 00e1 27       		.uleb128 0x27
+ 656 00e2 19       		.uleb128 0x19
+ 657 00e3 3C       		.uleb128 0x3c
+ 658 00e4 19       		.uleb128 0x19
+ 659 00e5 01       		.uleb128 0x1
+ 660 00e6 13       		.uleb128 0x13
+ 661 00e7 00       		.byte	0
+ 662 00e8 00       		.byte	0
+ 663 00e9 12       		.uleb128 0x12
+ 664 00ea 05       		.uleb128 0x5
+ 665 00eb 00       		.byte	0
+ 666 00ec 49       		.uleb128 0x49
+ 667 00ed 13       		.uleb128 0x13
+ 668 00ee 00       		.byte	0
+ 669 00ef 00       		.byte	0
+ 670 00f0 13       		.uleb128 0x13
+ 671 00f1 0F       		.uleb128 0xf
+ 672 00f2 00       		.byte	0
+ 673 00f3 0B       		.uleb128 0xb
+ 674 00f4 0B       		.uleb128 0xb
+ 675 00f5 49       		.uleb128 0x49
+ 676 00f6 13       		.uleb128 0x13
+ 677 00f7 00       		.byte	0
+ 678 00f8 00       		.byte	0
+ 679 00f9 14       		.uleb128 0x14
+ 680 00fa 26       		.uleb128 0x26
+ 681 00fb 00       		.byte	0
+ 682 00fc 49       		.uleb128 0x49
+ 683 00fd 13       		.uleb128 0x13
+ 684 00fe 00       		.byte	0
+ 685 00ff 00       		.byte	0
+ 686 0100 15       		.uleb128 0x15
+ 687 0101 2E       		.uleb128 0x2e
+ 688 0102 00       		.byte	0
+ 689 0103 3F       		.uleb128 0x3f
+ 690 0104 19       		.uleb128 0x19
+ 691 0105 03       		.uleb128 0x3
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 16
+
+
+ 692 0106 0E       		.uleb128 0xe
+ 693 0107 3A       		.uleb128 0x3a
+ 694 0108 0B       		.uleb128 0xb
+ 695 0109 3B       		.uleb128 0x3b
+ 696 010a 0B       		.uleb128 0xb
+ 697 010b 27       		.uleb128 0x27
+ 698 010c 19       		.uleb128 0x19
+ 699 010d 49       		.uleb128 0x49
+ 700 010e 13       		.uleb128 0x13
+ 701 010f 3C       		.uleb128 0x3c
+ 702 0110 19       		.uleb128 0x19
+ 703 0111 00       		.byte	0
+ 704 0112 00       		.byte	0
+ 705 0113 00       		.byte	0
+ 706              		.section	.debug_aranges,"",%progbits
+ 707 0000 1C000000 		.4byte	0x1c
+ 708 0004 0200     		.2byte	0x2
+ 709 0006 00000000 		.4byte	.Ldebug_info0
+ 710 000a 04       		.byte	0x4
+ 711 000b 00       		.byte	0
+ 712 000c 0000     		.2byte	0
+ 713 000e 0000     		.2byte	0
+ 714 0010 00000000 		.4byte	.LFB63
+ 715 0014 54000000 		.4byte	.LFE63-.LFB63
+ 716 0018 00000000 		.4byte	0
+ 717 001c 00000000 		.4byte	0
+ 718              		.section	.debug_ranges,"",%progbits
+ 719              	.Ldebug_ranges0:
+ 720 0000 00000000 		.4byte	.LFB63
+ 721 0004 54000000 		.4byte	.LFE63
+ 722 0008 00000000 		.4byte	0
+ 723 000c 00000000 		.4byte	0
+ 724              		.section	.debug_line,"",%progbits
+ 725              	.Ldebug_line0:
+ 726 0000 90010000 		.section	.debug_str,"MS",%progbits,1
+ 726      02005D01 
+ 726      00000201 
+ 726      FB0E0D00 
+ 726      01010101 
+ 727              	.LASF31:
+ 728 0000 433A5C55 		.ascii	"C:\\Users\\Jose Antonio\\Documents\\PSOC Creator\\P"
+ 728      73657273 
+ 728      5C4A6F73 
+ 728      6520416E 
+ 728      746F6E69 
+ 729 002e 726F7965 		.ascii	"royectosPSOC\\Ezi2cDesign01.cydsn\000"
+ 729      63746F73 
+ 729      50534F43 
+ 729      5C457A69 
+ 729      32634465 
+ 730              	.LASF9:
+ 731 004f 5F5F696E 		.ascii	"__int32_t\000"
+ 731      7433325F 
+ 731      7400
+ 732              	.LASF11:
+ 733 0059 75696E74 		.ascii	"uint8\000"
+ 733      3800
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 17
+
+
+ 734              	.LASF30:
+ 735 005f 2E5C6D61 		.ascii	".\\main.c\000"
+ 735      696E2E63 
+ 735      00
+ 736              	.LASF13:
+ 737 0068 666C6F61 		.ascii	"float\000"
+ 737      7400
+ 738              	.LASF26:
+ 739 006e 4C43445F 		.ascii	"LCD_Start\000"
+ 739      53746172 
+ 739      7400
+ 740              	.LASF21:
+ 741 0078 69326342 		.ascii	"i2cBufferWrite\000"
+ 741      75666665 
+ 741      72577269 
+ 741      746500
+ 742              	.LASF1:
+ 743 0087 756E7369 		.ascii	"unsigned char\000"
+ 743      676E6564 
+ 743      20636861 
+ 743      7200
+ 744              	.LASF29:
+ 745 0095 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 745      4320342E 
+ 745      392E3320 
+ 745      32303135 
+ 745      30333033 
+ 746 00c8 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 746      20726576 
+ 746      6973696F 
+ 746      6E203232 
+ 746      31323230 
+ 747 00fb 33202D66 		.ascii	"3 -ffunction-sections -ffat-lto-objects\000"
+ 747      66756E63 
+ 747      74696F6E 
+ 747      2D736563 
+ 747      74696F6E 
+ 748              	.LASF15:
+ 749 0123 63686172 		.ascii	"char8\000"
+ 749      3800
+ 750              	.LASF5:
+ 751 0129 6C6F6E67 		.ascii	"long unsigned int\000"
+ 751      20756E73 
+ 751      69676E65 
+ 751      6420696E 
+ 751      7400
+ 752              	.LASF3:
+ 753 013b 73686F72 		.ascii	"short unsigned int\000"
+ 753      7420756E 
+ 753      7369676E 
+ 753      65642069 
+ 753      6E7400
+ 754              	.LASF18:
+ 755 014e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 755      52784275 
+ 755      66666572 
+ 755      00
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 18
+
+
+ 756              	.LASF20:
+ 757 015b 69326342 		.ascii	"i2cBufferRead\000"
+ 757      75666665 
+ 757      72526561 
+ 757      6400
+ 758              	.LASF14:
+ 759 0169 646F7562 		.ascii	"double\000"
+ 759      6C6500
+ 760              	.LASF32:
+ 761 0170 6D61696E 		.ascii	"main\000"
+ 761      00
+ 762              	.LASF28:
+ 763 0175 455A4932 		.ascii	"EZI2C_SetBuffer1\000"
+ 763      435F5365 
+ 763      74427566 
+ 763      66657231 
+ 763      00
+ 764              	.LASF25:
+ 765 0186 4C43445F 		.ascii	"LCD_PrintString\000"
+ 765      5072696E 
+ 765      74537472 
+ 765      696E6700 
+ 766              	.LASF12:
+ 767 0196 75696E74 		.ascii	"uint16\000"
+ 767      313600
+ 768              	.LASF8:
+ 769 019d 756E7369 		.ascii	"unsigned int\000"
+ 769      676E6564 
+ 769      20696E74 
+ 769      00
+ 770              	.LASF7:
+ 771 01aa 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 771      206C6F6E 
+ 771      6720756E 
+ 771      7369676E 
+ 771      65642069 
+ 772              	.LASF24:
+ 773 01c1 4C43445F 		.ascii	"LCD_Position\000"
+ 773      506F7369 
+ 773      74696F6E 
+ 773      00
+ 774              	.LASF10:
+ 775 01ce 696E7433 		.ascii	"int32_t\000"
+ 775      325F7400 
+ 776              	.LASF17:
+ 777 01d6 73697A65 		.ascii	"sizetype\000"
+ 777      74797065 
+ 777      00
+ 778              	.LASF6:
+ 779 01df 6C6F6E67 		.ascii	"long long int\000"
+ 779      206C6F6E 
+ 779      6720696E 
+ 779      7400
+ 780              	.LASF16:
+ 781 01ed 63686172 		.ascii	"char\000"
+ 781      00
+ 782              	.LASF19:
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccg4oAdy.s 			page 19
+
+
+ 783 01f2 657A6932 		.ascii	"ezi2cBuffer\000"
+ 783      63427566 
+ 783      66657200 
+ 784              	.LASF33:
+ 785 01fe 455A4932 		.ascii	"EZI2C_GetActivity\000"
+ 785      435F4765 
+ 785      74416374 
+ 785      69766974 
+ 785      7900
+ 786              	.LASF2:
+ 787 0210 73686F72 		.ascii	"short int\000"
+ 787      7420696E 
+ 787      7400
+ 788              	.LASF27:
+ 789 021a 455A4932 		.ascii	"EZI2C_Start\000"
+ 789      435F5374 
+ 789      61727400 
+ 790              	.LASF4:
+ 791 0226 6C6F6E67 		.ascii	"long int\000"
+ 791      20696E74 
+ 791      00
+ 792              	.LASF23:
+ 793 022f 4D794172 		.ascii	"MyArray\000"
+ 793      72617900 
+ 794              	.LASF0:
+ 795 0237 7369676E 		.ascii	"signed char\000"
+ 795      65642063 
+ 795      68617200 
+ 796              	.LASF22:
+ 797 0243 61637469 		.ascii	"actionSelect\000"
+ 797      6F6E5365 
+ 797      6C656374 
+ 797      00
+ 798              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

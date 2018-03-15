@@ -1,0 +1,824 @@
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"LCD_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.LCD_SaveConfig,"ax",%progbits
+  19              		.align	2
+  20              		.global	LCD_SaveConfig
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	LCD_SaveConfig, %function
+  24              	LCD_SaveConfig:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\LCD_PM.c"
+   1:.\Generated_Source\PSoC5/LCD_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/LCD_PM.c **** * File Name: LCD_PM.c
+   3:.\Generated_Source\PSoC5/LCD_PM.c **** * Version 2.20
+   4:.\Generated_Source\PSoC5/LCD_PM.c **** *
+   5:.\Generated_Source\PSoC5/LCD_PM.c **** * Description:
+   6:.\Generated_Source\PSoC5/LCD_PM.c **** *  This file provides the API source code for the Static Segment LCD component.
+   7:.\Generated_Source\PSoC5/LCD_PM.c **** *
+   8:.\Generated_Source\PSoC5/LCD_PM.c **** * Note:
+   9:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  10:.\Generated_Source\PSoC5/LCD_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/LCD_PM.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/LCD_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/LCD_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/LCD_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/LCD_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  17:.\Generated_Source\PSoC5/LCD_PM.c **** #include "LCD.h"
+  18:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  19:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  20:.\Generated_Source\PSoC5/LCD_PM.c **** static LCD_BACKUP_STRUCT LCD_backup;
+  21:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  22:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  23:.\Generated_Source\PSoC5/LCD_PM.c **** /*******************************************************************************
+  24:.\Generated_Source\PSoC5/LCD_PM.c **** * Function Name: LCD_SaveConfig
+  25:.\Generated_Source\PSoC5/LCD_PM.c **** ********************************************************************************
+  26:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  27:.\Generated_Source\PSoC5/LCD_PM.c **** * Summary:
+  28:.\Generated_Source\PSoC5/LCD_PM.c **** *  Does nothing, provided for consistency.
+  29:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  30:.\Generated_Source\PSoC5/LCD_PM.c **** * Parameters:
+  31:.\Generated_Source\PSoC5/LCD_PM.c **** *  None.
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  33:.\Generated_Source\PSoC5/LCD_PM.c **** * Return:
+  34:.\Generated_Source\PSoC5/LCD_PM.c **** *  None.
+  35:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  36:.\Generated_Source\PSoC5/LCD_PM.c **** *******************************************************************************/
+  37:.\Generated_Source\PSoC5/LCD_PM.c **** void LCD_SaveConfig(void) 
+  38:.\Generated_Source\PSoC5/LCD_PM.c **** {
+  27              		.loc 1 38 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 7047     		bx	lr
+  33              		.cfi_endproc
+  34              	.LFE0:
+  35              		.size	LCD_SaveConfig, .-LCD_SaveConfig
+  36 0002 00BF     		.section	.text.LCD_RestoreConfig,"ax",%progbits
+  37              		.align	2
+  38              		.global	LCD_RestoreConfig
+  39              		.thumb
+  40              		.thumb_func
+  41              		.type	LCD_RestoreConfig, %function
+  42              	LCD_RestoreConfig:
+  43              	.LFB1:
+  39:.\Generated_Source\PSoC5/LCD_PM.c **** }
+  40:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  41:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  42:.\Generated_Source\PSoC5/LCD_PM.c **** /*******************************************************************************
+  43:.\Generated_Source\PSoC5/LCD_PM.c **** * Function Name: LCD_RestoreConfig
+  44:.\Generated_Source\PSoC5/LCD_PM.c **** ********************************************************************************
+  45:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  46:.\Generated_Source\PSoC5/LCD_PM.c **** * Summary:
+  47:.\Generated_Source\PSoC5/LCD_PM.c **** *  Does nothing, provided for consistency.
+  48:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  49:.\Generated_Source\PSoC5/LCD_PM.c **** * Parameters:
+  50:.\Generated_Source\PSoC5/LCD_PM.c **** *  None.
+  51:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  52:.\Generated_Source\PSoC5/LCD_PM.c **** * Return:
+  53:.\Generated_Source\PSoC5/LCD_PM.c **** *  None.
+  54:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  55:.\Generated_Source\PSoC5/LCD_PM.c **** *******************************************************************************/
+  56:.\Generated_Source\PSoC5/LCD_PM.c **** void LCD_RestoreConfig(void) 
+  57:.\Generated_Source\PSoC5/LCD_PM.c **** {
+  44              		.loc 1 57 0
+  45              		.cfi_startproc
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48              		@ link register save eliminated.
+  49 0000 7047     		bx	lr
+  50              		.cfi_endproc
+  51              	.LFE1:
+  52              		.size	LCD_RestoreConfig, .-LCD_RestoreConfig
+  53 0002 00BF     		.section	.text.LCD_Sleep,"ax",%progbits
+  54              		.align	2
+  55              		.global	LCD_Sleep
+  56              		.thumb
+  57              		.thumb_func
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 3
+
+
+  58              		.type	LCD_Sleep, %function
+  59              	LCD_Sleep:
+  60              	.LFB2:
+  58:.\Generated_Source\PSoC5/LCD_PM.c **** }
+  59:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  60:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  61:.\Generated_Source\PSoC5/LCD_PM.c **** /*******************************************************************************
+  62:.\Generated_Source\PSoC5/LCD_PM.c **** * Function Name: LCD_Sleep
+  63:.\Generated_Source\PSoC5/LCD_PM.c **** ********************************************************************************
+  64:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  65:.\Generated_Source\PSoC5/LCD_PM.c **** * Summary:
+  66:.\Generated_Source\PSoC5/LCD_PM.c **** *  Prepares the component for entering the sleep mode.
+  67:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  68:.\Generated_Source\PSoC5/LCD_PM.c **** * Parameters:
+  69:.\Generated_Source\PSoC5/LCD_PM.c **** *  None.
+  70:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  71:.\Generated_Source\PSoC5/LCD_PM.c **** * Return:
+  72:.\Generated_Source\PSoC5/LCD_PM.c **** *  None.
+  73:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  74:.\Generated_Source\PSoC5/LCD_PM.c **** * Reentrant:
+  75:.\Generated_Source\PSoC5/LCD_PM.c **** *  No.
+  76:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  77:.\Generated_Source\PSoC5/LCD_PM.c **** *******************************************************************************/
+  78:.\Generated_Source\PSoC5/LCD_PM.c **** void LCD_Sleep(void) 
+  79:.\Generated_Source\PSoC5/LCD_PM.c **** {
+  61              		.loc 1 79 0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  80:.\Generated_Source\PSoC5/LCD_PM.c ****     LCD_backup.enableState = LCD_enableState;
+  66              		.loc 1 80 0
+  67 0000 024A     		ldr	r2, .L4
+  68 0002 034B     		ldr	r3, .L4+4
+  69 0004 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+  70 0006 1A70     		strb	r2, [r3]
+  81:.\Generated_Source\PSoC5/LCD_PM.c ****     LCD_SaveConfig();
+  82:.\Generated_Source\PSoC5/LCD_PM.c ****     LCD_Stop();
+  71              		.loc 1 82 0
+  72 0008 FFF7FEBF 		b	LCD_Stop
+  73              	.LVL0:
+  74              	.L5:
+  75              		.align	2
+  76              	.L4:
+  77 000c 00000000 		.word	LCD_enableState
+  78 0010 00000000 		.word	.LANCHOR0
+  79              		.cfi_endproc
+  80              	.LFE2:
+  81              		.size	LCD_Sleep, .-LCD_Sleep
+  82              		.section	.text.LCD_Wakeup,"ax",%progbits
+  83              		.align	2
+  84              		.global	LCD_Wakeup
+  85              		.thumb
+  86              		.thumb_func
+  87              		.type	LCD_Wakeup, %function
+  88              	LCD_Wakeup:
+  89              	.LFB3:
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 4
+
+
+  83:.\Generated_Source\PSoC5/LCD_PM.c **** }
+  84:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  85:.\Generated_Source\PSoC5/LCD_PM.c **** 
+  86:.\Generated_Source\PSoC5/LCD_PM.c **** /*******************************************************************************
+  87:.\Generated_Source\PSoC5/LCD_PM.c **** * Function Name: LCD_Wakeup
+  88:.\Generated_Source\PSoC5/LCD_PM.c **** ********************************************************************************
+  89:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  90:.\Generated_Source\PSoC5/LCD_PM.c **** * Summary:
+  91:.\Generated_Source\PSoC5/LCD_PM.c **** *  Wakes the component from sleep mode. Configures DMA and enables the component
+  92:.\Generated_Source\PSoC5/LCD_PM.c **** *  for normal operation.
+  93:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  94:.\Generated_Source\PSoC5/LCD_PM.c **** * Parameters:
+  95:.\Generated_Source\PSoC5/LCD_PM.c **** *  LCD_enableState - Global variable.
+  96:.\Generated_Source\PSoC5/LCD_PM.c **** *
+  97:.\Generated_Source\PSoC5/LCD_PM.c **** * Return:
+  98:.\Generated_Source\PSoC5/LCD_PM.c **** *  Status one of standard status for PSoC3 Component
+  99:.\Generated_Source\PSoC5/LCD_PM.c **** *       CYRET_SUCCESS - Function completed successfully.
+ 100:.\Generated_Source\PSoC5/LCD_PM.c **** *       CYRET_LOCKED - The object was locked, already in use. Some of TDs or
+ 101:.\Generated_Source\PSoC5/LCD_PM.c **** *                      a channel already in use.
+ 102:.\Generated_Source\PSoC5/LCD_PM.c **** *
+ 103:.\Generated_Source\PSoC5/LCD_PM.c **** * Reentrant:
+ 104:.\Generated_Source\PSoC5/LCD_PM.c **** *  No.
+ 105:.\Generated_Source\PSoC5/LCD_PM.c **** *
+ 106:.\Generated_Source\PSoC5/LCD_PM.c **** *******************************************************************************/
+ 107:.\Generated_Source\PSoC5/LCD_PM.c **** void LCD_Wakeup(void) 
+ 108:.\Generated_Source\PSoC5/LCD_PM.c **** {
+  90              		.loc 1 108 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+ 109:.\Generated_Source\PSoC5/LCD_PM.c ****     LCD_RestoreConfig();
+ 110:.\Generated_Source\PSoC5/LCD_PM.c **** 
+ 111:.\Generated_Source\PSoC5/LCD_PM.c ****     if(LCD_backup.enableState == 1u)
+  95              		.loc 1 111 0
+  96 0000 034B     		ldr	r3, .L10
+  97 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  98 0004 012B     		cmp	r3, #1
+  99 0006 00D0     		beq	.L9
+ 100 0008 7047     		bx	lr
+ 101              	.L9:
+ 112:.\Generated_Source\PSoC5/LCD_PM.c ****     {
+ 113:.\Generated_Source\PSoC5/LCD_PM.c ****         LCD_Enable();
+ 102              		.loc 1 113 0
+ 103 000a FFF7FEBF 		b	LCD_Enable
+ 104              	.LVL1:
+ 105              	.L11:
+ 106 000e 00BF     		.align	2
+ 107              	.L10:
+ 108 0010 00000000 		.word	.LANCHOR0
+ 109              		.cfi_endproc
+ 110              	.LFE3:
+ 111              		.size	LCD_Wakeup, .-LCD_Wakeup
+ 112              		.bss
+ 113              		.align	2
+ 114              		.set	.LANCHOR0,. + 0
+ 115              		.type	LCD_backup, %object
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 5
+
+
+ 116              		.size	LCD_backup, 1
+ 117              	LCD_backup:
+ 118 0000 00       		.space	1
+ 119 0001 000000   		.text
+ 120              	.Letext0:
+ 121              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 122              		.file 3 ".\\Generated_Source\\PSoC5\\LCD.h"
+ 123              		.section	.debug_info,"",%progbits
+ 124              	.Ldebug_info0:
+ 125 0000 3F010000 		.4byte	0x13f
+ 126 0004 0400     		.2byte	0x4
+ 127 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 128 000a 04       		.byte	0x4
+ 129 000b 01       		.uleb128 0x1
+ 130 000c A8000000 		.4byte	.LASF20
+ 131 0010 01       		.byte	0x1
+ 132 0011 48010000 		.4byte	.LASF21
+ 133 0015 10000000 		.4byte	.LASF22
+ 134 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 135 001d 00000000 		.4byte	0
+ 136 0021 00000000 		.4byte	.Ldebug_line0
+ 137 0025 02       		.uleb128 0x2
+ 138 0026 01       		.byte	0x1
+ 139 0027 06       		.byte	0x6
+ 140 0028 07020000 		.4byte	.LASF0
+ 141 002c 02       		.uleb128 0x2
+ 142 002d 01       		.byte	0x1
+ 143 002e 08       		.byte	0x8
+ 144 002f 9A000000 		.4byte	.LASF1
+ 145 0033 02       		.uleb128 0x2
+ 146 0034 02       		.byte	0x2
+ 147 0035 05       		.byte	0x5
+ 148 0036 D7010000 		.4byte	.LASF2
+ 149 003a 02       		.uleb128 0x2
+ 150 003b 02       		.byte	0x2
+ 151 003c 07       		.byte	0x7
+ 152 003d 72000000 		.4byte	.LASF3
+ 153 0041 02       		.uleb128 0x2
+ 154 0042 04       		.byte	0x4
+ 155 0043 05       		.byte	0x5
+ 156 0044 F2010000 		.4byte	.LASF4
+ 157 0048 02       		.uleb128 0x2
+ 158 0049 04       		.byte	0x4
+ 159 004a 07       		.byte	0x7
+ 160 004b 36010000 		.4byte	.LASF5
+ 161 004f 02       		.uleb128 0x2
+ 162 0050 08       		.byte	0x8
+ 163 0051 05       		.byte	0x5
+ 164 0052 B2010000 		.4byte	.LASF6
+ 165 0056 02       		.uleb128 0x2
+ 166 0057 08       		.byte	0x8
+ 167 0058 07       		.byte	0x7
+ 168 0059 9B010000 		.4byte	.LASF7
+ 169 005d 03       		.uleb128 0x3
+ 170 005e 04       		.byte	0x4
+ 171 005f 05       		.byte	0x5
+ 172 0060 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 6
+
+
+ 173 0064 02       		.uleb128 0x2
+ 174 0065 04       		.byte	0x4
+ 175 0066 07       		.byte	0x7
+ 176 0067 8E010000 		.4byte	.LASF8
+ 177 006b 04       		.uleb128 0x4
+ 178 006c E1010000 		.4byte	.LASF12
+ 179 0070 02       		.byte	0x2
+ 180 0071 9201     		.2byte	0x192
+ 181 0073 2C000000 		.4byte	0x2c
+ 182 0077 02       		.uleb128 0x2
+ 183 0078 04       		.byte	0x4
+ 184 0079 04       		.byte	0x4
+ 185 007a 85000000 		.4byte	.LASF9
+ 186 007e 02       		.uleb128 0x2
+ 187 007f 08       		.byte	0x8
+ 188 0080 04       		.byte	0x4
+ 189 0081 6A010000 		.4byte	.LASF10
+ 190 0085 02       		.uleb128 0x2
+ 191 0086 01       		.byte	0x1
+ 192 0087 08       		.byte	0x8
+ 193 0088 C0010000 		.4byte	.LASF11
+ 194 008c 05       		.uleb128 0x5
+ 195 008d 01       		.byte	0x1
+ 196 008e 03       		.byte	0x3
+ 197 008f 2C       		.byte	0x2c
+ 198 0090 A1000000 		.4byte	0xa1
+ 199 0094 06       		.uleb128 0x6
+ 200 0095 FB010000 		.4byte	.LASF23
+ 201 0099 03       		.byte	0x3
+ 202 009a 2E       		.byte	0x2e
+ 203 009b 6B000000 		.4byte	0x6b
+ 204 009f 00       		.byte	0
+ 205 00a0 00       		.byte	0
+ 206 00a1 07       		.uleb128 0x7
+ 207 00a2 C5010000 		.4byte	.LASF13
+ 208 00a6 03       		.byte	0x3
+ 209 00a7 2F       		.byte	0x2f
+ 210 00a8 8C000000 		.4byte	0x8c
+ 211 00ac 08       		.uleb128 0x8
+ 212 00ad 8B000000 		.4byte	.LASF14
+ 213 00b1 01       		.byte	0x1
+ 214 00b2 25       		.byte	0x25
+ 215 00b3 01       		.byte	0x1
+ 216 00b4 08       		.uleb128 0x8
+ 217 00b5 7C010000 		.4byte	.LASF15
+ 218 00b9 01       		.byte	0x1
+ 219 00ba 38       		.byte	0x38
+ 220 00bb 01       		.byte	0x1
+ 221 00bc 09       		.uleb128 0x9
+ 222 00bd AC000000 		.4byte	0xac
+ 223 00c1 00000000 		.4byte	.LFB0
+ 224 00c5 02000000 		.4byte	.LFE0-.LFB0
+ 225 00c9 01       		.uleb128 0x1
+ 226 00ca 9C       		.byte	0x9c
+ 227 00cb 09       		.uleb128 0x9
+ 228 00cc B4000000 		.4byte	0xb4
+ 229 00d0 00000000 		.4byte	.LFB1
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 7
+
+
+ 230 00d4 02000000 		.4byte	.LFE1-.LFB1
+ 231 00d8 01       		.uleb128 0x1
+ 232 00d9 9C       		.byte	0x9c
+ 233 00da 0A       		.uleb128 0xa
+ 234 00db 5F000000 		.4byte	.LASF16
+ 235 00df 01       		.byte	0x1
+ 236 00e0 4E       		.byte	0x4e
+ 237 00e1 00000000 		.4byte	.LFB2
+ 238 00e5 14000000 		.4byte	.LFE2-.LFB2
+ 239 00e9 01       		.uleb128 0x1
+ 240 00ea 9C       		.byte	0x9c
+ 241 00eb F9000000 		.4byte	0xf9
+ 242 00ef 0B       		.uleb128 0xb
+ 243 00f0 0C000000 		.4byte	.LVL0
+ 244 00f4 34010000 		.4byte	0x134
+ 245 00f8 00       		.byte	0
+ 246 00f9 0A       		.uleb128 0xa
+ 247 00fa 13020000 		.4byte	.LASF17
+ 248 00fe 01       		.byte	0x1
+ 249 00ff 6B       		.byte	0x6b
+ 250 0100 00000000 		.4byte	.LFB3
+ 251 0104 14000000 		.4byte	.LFE3-.LFB3
+ 252 0108 01       		.uleb128 0x1
+ 253 0109 9C       		.byte	0x9c
+ 254 010a 18010000 		.4byte	0x118
+ 255 010e 0B       		.uleb128 0xb
+ 256 010f 0E000000 		.4byte	.LVL1
+ 257 0113 3B010000 		.4byte	0x13b
+ 258 0117 00       		.byte	0
+ 259 0118 0C       		.uleb128 0xc
+ 260 0119 E7010000 		.4byte	.LASF24
+ 261 011d 01       		.byte	0x1
+ 262 011e 14       		.byte	0x14
+ 263 011f A1000000 		.4byte	0xa1
+ 264 0123 05       		.uleb128 0x5
+ 265 0124 03       		.byte	0x3
+ 266 0125 00000000 		.4byte	LCD_backup
+ 267 0129 0D       		.uleb128 0xd
+ 268 012a 00000000 		.4byte	.LASF25
+ 269 012e 03       		.byte	0x3
+ 270 012f 76       		.byte	0x76
+ 271 0130 6B000000 		.4byte	0x6b
+ 272 0134 0E       		.uleb128 0xe
+ 273 0135 69000000 		.4byte	.LASF18
+ 274 0139 03       		.byte	0x3
+ 275 013a 39       		.byte	0x39
+ 276 013b 0E       		.uleb128 0xe
+ 277 013c 71010000 		.4byte	.LASF19
+ 278 0140 03       		.byte	0x3
+ 279 0141 37       		.byte	0x37
+ 280 0142 00       		.byte	0
+ 281              		.section	.debug_abbrev,"",%progbits
+ 282              	.Ldebug_abbrev0:
+ 283 0000 01       		.uleb128 0x1
+ 284 0001 11       		.uleb128 0x11
+ 285 0002 01       		.byte	0x1
+ 286 0003 25       		.uleb128 0x25
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 8
+
+
+ 287 0004 0E       		.uleb128 0xe
+ 288 0005 13       		.uleb128 0x13
+ 289 0006 0B       		.uleb128 0xb
+ 290 0007 03       		.uleb128 0x3
+ 291 0008 0E       		.uleb128 0xe
+ 292 0009 1B       		.uleb128 0x1b
+ 293 000a 0E       		.uleb128 0xe
+ 294 000b 55       		.uleb128 0x55
+ 295 000c 17       		.uleb128 0x17
+ 296 000d 11       		.uleb128 0x11
+ 297 000e 01       		.uleb128 0x1
+ 298 000f 10       		.uleb128 0x10
+ 299 0010 17       		.uleb128 0x17
+ 300 0011 00       		.byte	0
+ 301 0012 00       		.byte	0
+ 302 0013 02       		.uleb128 0x2
+ 303 0014 24       		.uleb128 0x24
+ 304 0015 00       		.byte	0
+ 305 0016 0B       		.uleb128 0xb
+ 306 0017 0B       		.uleb128 0xb
+ 307 0018 3E       		.uleb128 0x3e
+ 308 0019 0B       		.uleb128 0xb
+ 309 001a 03       		.uleb128 0x3
+ 310 001b 0E       		.uleb128 0xe
+ 311 001c 00       		.byte	0
+ 312 001d 00       		.byte	0
+ 313 001e 03       		.uleb128 0x3
+ 314 001f 24       		.uleb128 0x24
+ 315 0020 00       		.byte	0
+ 316 0021 0B       		.uleb128 0xb
+ 317 0022 0B       		.uleb128 0xb
+ 318 0023 3E       		.uleb128 0x3e
+ 319 0024 0B       		.uleb128 0xb
+ 320 0025 03       		.uleb128 0x3
+ 321 0026 08       		.uleb128 0x8
+ 322 0027 00       		.byte	0
+ 323 0028 00       		.byte	0
+ 324 0029 04       		.uleb128 0x4
+ 325 002a 16       		.uleb128 0x16
+ 326 002b 00       		.byte	0
+ 327 002c 03       		.uleb128 0x3
+ 328 002d 0E       		.uleb128 0xe
+ 329 002e 3A       		.uleb128 0x3a
+ 330 002f 0B       		.uleb128 0xb
+ 331 0030 3B       		.uleb128 0x3b
+ 332 0031 05       		.uleb128 0x5
+ 333 0032 49       		.uleb128 0x49
+ 334 0033 13       		.uleb128 0x13
+ 335 0034 00       		.byte	0
+ 336 0035 00       		.byte	0
+ 337 0036 05       		.uleb128 0x5
+ 338 0037 13       		.uleb128 0x13
+ 339 0038 01       		.byte	0x1
+ 340 0039 0B       		.uleb128 0xb
+ 341 003a 0B       		.uleb128 0xb
+ 342 003b 3A       		.uleb128 0x3a
+ 343 003c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 9
+
+
+ 344 003d 3B       		.uleb128 0x3b
+ 345 003e 0B       		.uleb128 0xb
+ 346 003f 01       		.uleb128 0x1
+ 347 0040 13       		.uleb128 0x13
+ 348 0041 00       		.byte	0
+ 349 0042 00       		.byte	0
+ 350 0043 06       		.uleb128 0x6
+ 351 0044 0D       		.uleb128 0xd
+ 352 0045 00       		.byte	0
+ 353 0046 03       		.uleb128 0x3
+ 354 0047 0E       		.uleb128 0xe
+ 355 0048 3A       		.uleb128 0x3a
+ 356 0049 0B       		.uleb128 0xb
+ 357 004a 3B       		.uleb128 0x3b
+ 358 004b 0B       		.uleb128 0xb
+ 359 004c 49       		.uleb128 0x49
+ 360 004d 13       		.uleb128 0x13
+ 361 004e 38       		.uleb128 0x38
+ 362 004f 0B       		.uleb128 0xb
+ 363 0050 00       		.byte	0
+ 364 0051 00       		.byte	0
+ 365 0052 07       		.uleb128 0x7
+ 366 0053 16       		.uleb128 0x16
+ 367 0054 00       		.byte	0
+ 368 0055 03       		.uleb128 0x3
+ 369 0056 0E       		.uleb128 0xe
+ 370 0057 3A       		.uleb128 0x3a
+ 371 0058 0B       		.uleb128 0xb
+ 372 0059 3B       		.uleb128 0x3b
+ 373 005a 0B       		.uleb128 0xb
+ 374 005b 49       		.uleb128 0x49
+ 375 005c 13       		.uleb128 0x13
+ 376 005d 00       		.byte	0
+ 377 005e 00       		.byte	0
+ 378 005f 08       		.uleb128 0x8
+ 379 0060 2E       		.uleb128 0x2e
+ 380 0061 00       		.byte	0
+ 381 0062 3F       		.uleb128 0x3f
+ 382 0063 19       		.uleb128 0x19
+ 383 0064 03       		.uleb128 0x3
+ 384 0065 0E       		.uleb128 0xe
+ 385 0066 3A       		.uleb128 0x3a
+ 386 0067 0B       		.uleb128 0xb
+ 387 0068 3B       		.uleb128 0x3b
+ 388 0069 0B       		.uleb128 0xb
+ 389 006a 27       		.uleb128 0x27
+ 390 006b 19       		.uleb128 0x19
+ 391 006c 20       		.uleb128 0x20
+ 392 006d 0B       		.uleb128 0xb
+ 393 006e 00       		.byte	0
+ 394 006f 00       		.byte	0
+ 395 0070 09       		.uleb128 0x9
+ 396 0071 2E       		.uleb128 0x2e
+ 397 0072 00       		.byte	0
+ 398 0073 31       		.uleb128 0x31
+ 399 0074 13       		.uleb128 0x13
+ 400 0075 11       		.uleb128 0x11
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 10
+
+
+ 401 0076 01       		.uleb128 0x1
+ 402 0077 12       		.uleb128 0x12
+ 403 0078 06       		.uleb128 0x6
+ 404 0079 40       		.uleb128 0x40
+ 405 007a 18       		.uleb128 0x18
+ 406 007b 9742     		.uleb128 0x2117
+ 407 007d 19       		.uleb128 0x19
+ 408 007e 00       		.byte	0
+ 409 007f 00       		.byte	0
+ 410 0080 0A       		.uleb128 0xa
+ 411 0081 2E       		.uleb128 0x2e
+ 412 0082 01       		.byte	0x1
+ 413 0083 3F       		.uleb128 0x3f
+ 414 0084 19       		.uleb128 0x19
+ 415 0085 03       		.uleb128 0x3
+ 416 0086 0E       		.uleb128 0xe
+ 417 0087 3A       		.uleb128 0x3a
+ 418 0088 0B       		.uleb128 0xb
+ 419 0089 3B       		.uleb128 0x3b
+ 420 008a 0B       		.uleb128 0xb
+ 421 008b 27       		.uleb128 0x27
+ 422 008c 19       		.uleb128 0x19
+ 423 008d 11       		.uleb128 0x11
+ 424 008e 01       		.uleb128 0x1
+ 425 008f 12       		.uleb128 0x12
+ 426 0090 06       		.uleb128 0x6
+ 427 0091 40       		.uleb128 0x40
+ 428 0092 18       		.uleb128 0x18
+ 429 0093 9742     		.uleb128 0x2117
+ 430 0095 19       		.uleb128 0x19
+ 431 0096 01       		.uleb128 0x1
+ 432 0097 13       		.uleb128 0x13
+ 433 0098 00       		.byte	0
+ 434 0099 00       		.byte	0
+ 435 009a 0B       		.uleb128 0xb
+ 436 009b 898201   		.uleb128 0x4109
+ 437 009e 00       		.byte	0
+ 438 009f 11       		.uleb128 0x11
+ 439 00a0 01       		.uleb128 0x1
+ 440 00a1 9542     		.uleb128 0x2115
+ 441 00a3 19       		.uleb128 0x19
+ 442 00a4 31       		.uleb128 0x31
+ 443 00a5 13       		.uleb128 0x13
+ 444 00a6 00       		.byte	0
+ 445 00a7 00       		.byte	0
+ 446 00a8 0C       		.uleb128 0xc
+ 447 00a9 34       		.uleb128 0x34
+ 448 00aa 00       		.byte	0
+ 449 00ab 03       		.uleb128 0x3
+ 450 00ac 0E       		.uleb128 0xe
+ 451 00ad 3A       		.uleb128 0x3a
+ 452 00ae 0B       		.uleb128 0xb
+ 453 00af 3B       		.uleb128 0x3b
+ 454 00b0 0B       		.uleb128 0xb
+ 455 00b1 49       		.uleb128 0x49
+ 456 00b2 13       		.uleb128 0x13
+ 457 00b3 02       		.uleb128 0x2
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 11
+
+
+ 458 00b4 18       		.uleb128 0x18
+ 459 00b5 00       		.byte	0
+ 460 00b6 00       		.byte	0
+ 461 00b7 0D       		.uleb128 0xd
+ 462 00b8 34       		.uleb128 0x34
+ 463 00b9 00       		.byte	0
+ 464 00ba 03       		.uleb128 0x3
+ 465 00bb 0E       		.uleb128 0xe
+ 466 00bc 3A       		.uleb128 0x3a
+ 467 00bd 0B       		.uleb128 0xb
+ 468 00be 3B       		.uleb128 0x3b
+ 469 00bf 0B       		.uleb128 0xb
+ 470 00c0 49       		.uleb128 0x49
+ 471 00c1 13       		.uleb128 0x13
+ 472 00c2 3F       		.uleb128 0x3f
+ 473 00c3 19       		.uleb128 0x19
+ 474 00c4 3C       		.uleb128 0x3c
+ 475 00c5 19       		.uleb128 0x19
+ 476 00c6 00       		.byte	0
+ 477 00c7 00       		.byte	0
+ 478 00c8 0E       		.uleb128 0xe
+ 479 00c9 2E       		.uleb128 0x2e
+ 480 00ca 00       		.byte	0
+ 481 00cb 3F       		.uleb128 0x3f
+ 482 00cc 19       		.uleb128 0x19
+ 483 00cd 03       		.uleb128 0x3
+ 484 00ce 0E       		.uleb128 0xe
+ 485 00cf 3A       		.uleb128 0x3a
+ 486 00d0 0B       		.uleb128 0xb
+ 487 00d1 3B       		.uleb128 0x3b
+ 488 00d2 0B       		.uleb128 0xb
+ 489 00d3 27       		.uleb128 0x27
+ 490 00d4 19       		.uleb128 0x19
+ 491 00d5 3C       		.uleb128 0x3c
+ 492 00d6 19       		.uleb128 0x19
+ 493 00d7 00       		.byte	0
+ 494 00d8 00       		.byte	0
+ 495 00d9 00       		.byte	0
+ 496              		.section	.debug_aranges,"",%progbits
+ 497 0000 34000000 		.4byte	0x34
+ 498 0004 0200     		.2byte	0x2
+ 499 0006 00000000 		.4byte	.Ldebug_info0
+ 500 000a 04       		.byte	0x4
+ 501 000b 00       		.byte	0
+ 502 000c 0000     		.2byte	0
+ 503 000e 0000     		.2byte	0
+ 504 0010 00000000 		.4byte	.LFB0
+ 505 0014 02000000 		.4byte	.LFE0-.LFB0
+ 506 0018 00000000 		.4byte	.LFB1
+ 507 001c 02000000 		.4byte	.LFE1-.LFB1
+ 508 0020 00000000 		.4byte	.LFB2
+ 509 0024 14000000 		.4byte	.LFE2-.LFB2
+ 510 0028 00000000 		.4byte	.LFB3
+ 511 002c 14000000 		.4byte	.LFE3-.LFB3
+ 512 0030 00000000 		.4byte	0
+ 513 0034 00000000 		.4byte	0
+ 514              		.section	.debug_ranges,"",%progbits
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 12
+
+
+ 515              	.Ldebug_ranges0:
+ 516 0000 00000000 		.4byte	.LFB0
+ 517 0004 02000000 		.4byte	.LFE0
+ 518 0008 00000000 		.4byte	.LFB1
+ 519 000c 02000000 		.4byte	.LFE1
+ 520 0010 00000000 		.4byte	.LFB2
+ 521 0014 14000000 		.4byte	.LFE2
+ 522 0018 00000000 		.4byte	.LFB3
+ 523 001c 14000000 		.4byte	.LFE3
+ 524 0020 00000000 		.4byte	0
+ 525 0024 00000000 		.4byte	0
+ 526              		.section	.debug_line,"",%progbits
+ 527              	.Ldebug_line0:
+ 528 0000 96000000 		.section	.debug_str,"MS",%progbits,1
+ 528      02004E00 
+ 528      00000201 
+ 528      FB0E0D00 
+ 528      01010101 
+ 529              	.LASF25:
+ 530 0000 4C43445F 		.ascii	"LCD_enableState\000"
+ 530      656E6162 
+ 530      6C655374 
+ 530      61746500 
+ 531              	.LASF22:
+ 532 0010 433A5C55 		.ascii	"C:\\Users\\Jose Antonio\\Documents\\PSOC Creator\\P"
+ 532      73657273 
+ 532      5C4A6F73 
+ 532      6520416E 
+ 532      746F6E69 
+ 533 003e 726F7965 		.ascii	"royectosPSOC\\Ezi2cDesign01.cydsn\000"
+ 533      63746F73 
+ 533      50534F43 
+ 533      5C457A69 
+ 533      32634465 
+ 534              	.LASF16:
+ 535 005f 4C43445F 		.ascii	"LCD_Sleep\000"
+ 535      536C6565 
+ 535      7000
+ 536              	.LASF18:
+ 537 0069 4C43445F 		.ascii	"LCD_Stop\000"
+ 537      53746F70 
+ 537      00
+ 538              	.LASF3:
+ 539 0072 73686F72 		.ascii	"short unsigned int\000"
+ 539      7420756E 
+ 539      7369676E 
+ 539      65642069 
+ 539      6E7400
+ 540              	.LASF9:
+ 541 0085 666C6F61 		.ascii	"float\000"
+ 541      7400
+ 542              	.LASF14:
+ 543 008b 4C43445F 		.ascii	"LCD_SaveConfig\000"
+ 543      53617665 
+ 543      436F6E66 
+ 543      696700
+ 544              	.LASF1:
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 13
+
+
+ 545 009a 756E7369 		.ascii	"unsigned char\000"
+ 545      676E6564 
+ 545      20636861 
+ 545      7200
+ 546              	.LASF20:
+ 547 00a8 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 547      4320342E 
+ 547      392E3320 
+ 547      32303135 
+ 547      30333033 
+ 548 00db 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 548      20726576 
+ 548      6973696F 
+ 548      6E203232 
+ 548      31323230 
+ 549 010e 33202D66 		.ascii	"3 -ffunction-sections -ffat-lto-objects\000"
+ 549      66756E63 
+ 549      74696F6E 
+ 549      2D736563 
+ 549      74696F6E 
+ 550              	.LASF5:
+ 551 0136 6C6F6E67 		.ascii	"long unsigned int\000"
+ 551      20756E73 
+ 551      69676E65 
+ 551      6420696E 
+ 551      7400
+ 552              	.LASF21:
+ 553 0148 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\LCD_PM.c\000"
+ 553      6E657261 
+ 553      7465645F 
+ 553      536F7572 
+ 553      63655C50 
+ 554              	.LASF10:
+ 555 016a 646F7562 		.ascii	"double\000"
+ 555      6C6500
+ 556              	.LASF19:
+ 557 0171 4C43445F 		.ascii	"LCD_Enable\000"
+ 557      456E6162 
+ 557      6C6500
+ 558              	.LASF15:
+ 559 017c 4C43445F 		.ascii	"LCD_RestoreConfig\000"
+ 559      52657374 
+ 559      6F726543 
+ 559      6F6E6669 
+ 559      6700
+ 560              	.LASF8:
+ 561 018e 756E7369 		.ascii	"unsigned int\000"
+ 561      676E6564 
+ 561      20696E74 
+ 561      00
+ 562              	.LASF7:
+ 563 019b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 563      206C6F6E 
+ 563      6720756E 
+ 563      7369676E 
+ 563      65642069 
+ 564              	.LASF6:
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\cc5wcXgh.s 			page 14
+
+
+ 565 01b2 6C6F6E67 		.ascii	"long long int\000"
+ 565      206C6F6E 
+ 565      6720696E 
+ 565      7400
+ 566              	.LASF11:
+ 567 01c0 63686172 		.ascii	"char\000"
+ 567      00
+ 568              	.LASF13:
+ 569 01c5 4C43445F 		.ascii	"LCD_BACKUP_STRUCT\000"
+ 569      4241434B 
+ 569      55505F53 
+ 569      54525543 
+ 569      5400
+ 570              	.LASF2:
+ 571 01d7 73686F72 		.ascii	"short int\000"
+ 571      7420696E 
+ 571      7400
+ 572              	.LASF12:
+ 573 01e1 75696E74 		.ascii	"uint8\000"
+ 573      3800
+ 574              	.LASF24:
+ 575 01e7 4C43445F 		.ascii	"LCD_backup\000"
+ 575      6261636B 
+ 575      757000
+ 576              	.LASF4:
+ 577 01f2 6C6F6E67 		.ascii	"long int\000"
+ 577      20696E74 
+ 577      00
+ 578              	.LASF23:
+ 579 01fb 656E6162 		.ascii	"enableState\000"
+ 579      6C655374 
+ 579      61746500 
+ 580              	.LASF0:
+ 581 0207 7369676E 		.ascii	"signed char\000"
+ 581      65642063 
+ 581      68617200 
+ 582              	.LASF17:
+ 583 0213 4C43445F 		.ascii	"LCD_Wakeup\000"
+ 583      57616B65 
+ 583      757000
+ 584              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

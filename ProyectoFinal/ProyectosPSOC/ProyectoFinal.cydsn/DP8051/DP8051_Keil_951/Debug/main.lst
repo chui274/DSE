@@ -1,0 +1,751 @@
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\main.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_
+                    -Keil_951\Debug/main.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
+
+line level    source
+
+   1          /* ========================================
+   2           *
+   3           * Copyright YOUR COMPANY, THE YEAR
+   4           * All Rights Reserved
+   5           * UNPUBLISHED, LICENSED SOFTWARE.
+   6           *
+   7           * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8           * WHICH IS THE PROPERTY OF your company.
+   9           *
+  10           * ========================================
+  11          */
+  12          #include <project.h>
+  13          #include <stdio.h>
+  14          #include <stdlib.h>
+  15          #include <string.h>
+  16          uint8 get_width(uint8 volt);
+  17          uint8 Potential,Width,LCD_OutputString, contador,true,delay;
+  18          uint16  TimeDistMeas    = 0;                                    // Value read from TimeDistMeas, eg HC-SRO4 PW returned, in 1 uS increments
+  19          float   distmeas                = 0.0;                                  // Value measured, uS / 148 = inches
+  20          char    dispbuff[ 20 ]; 
+  21          void ServoMotor();
+  22          void UltraSonido();
+  23          int main()
+  24          {
+  25   1              
+  26   1              true =1;
+  27   1              contador =5;
+  28   1              delay = 200;
+  29   1       Clock_Enable();
+  30   1       PWM_Start();
+  31   1       ADC_Start();
+  32   1       LCD_Start();
+  33   1       LCD_Position(0,0);
+  34   1       LCD_PrintString("Servo Pos:");
+  35   1              CyGlobalIntEnable; /* Enable global interrupts. */
+  36   1      TimeDistMeas_Start( ); 
+  37   1              /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  38   1      
+  39   1              for(;;)
+  40   1              {
+  41   2                      /* Place your application code here. */
+  42   2                      ServoMotor();
+  43   2                      //UltraSonido();
+  44   2              }
+  45   1      }
+  46          void ServoMotor()
+  47          {
+  48   1              ADC_StartConvert();
+  49   1       ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
+  50   1       Potential=ADC_GetResult8();
+  51   1       delay= get_width(Potential);
+  52   1          if((contador>=5)&(contador<=25)){
+  53   2              if( true==1){
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 2   
+
+  54   3                      Width= contador++;
+  55   3                      //CyDelay(delay);
+  56   3              }
+  57   2              else{
+  58   3                      Width= contador--;
+  59   3                      //CyDelay(delay);
+  60   3              }
+  61   2      }
+  62   1      else if (contador>25){
+  63   2              true=0;
+  64   2              contador--;
+  65   2      }
+  66   1      else{
+  67   2              true=1;
+  68   2              contador++;
+  69   2      }
+  70   1      
+  71   1       if((Width >9)&( Width <20)) LCD_OutputString= Width +6;
+  72   1       else if (Width >19) LCD_OutputString= Width +12;
+  73   1       else LCD_OutputString= Width;
+  74   1      
+  75   1       LCD_Position(0,10);
+  76   1       LCD_PrintInt8(LCD_OutputString);
+  77   1       PWM_WriteCompare(Width);
+  78   1      
+  79   1       }
+  80          void UltraSonido()
+  81          {
+  82   1          while(DistOutHCSRO4_Read( ) == 0 ) {                                        // HC-SRO4 ready for a trigger, to start new measurement cyc
+             -le ?
+  83   2                              
+  84   2                              Triggen_Write( 1 );                                                             // Trigger the HC-SRO4 to issue the 10 uS start pulse, and reset TimeDistMe
+             -as
+  85   2                              CyDelayUs( 10 );                                                                        // Trigger high for 10 uS
+  86   2                              Triggen_Write( 0 );                                                                     // Remove trigger and reset from TimeDistMeas
+  87   2                              CyDelay( 1 );                                                                           // Delay 1 mS to see if HC-SRO4 started a measurement, if not issue another trig
+             -ger to HC-SRO4
+  88   2                              
+  89   2                      }
+  90   1                      while( DistOutHCSRO4_Read( ) == 1 ) { };                                // Wait until HC-SRO4 finishes measurement cycle
+  91   1      
+  92   1                      TimeDistMeas = 65535 - TimeDistMeas_ReadCounter( );             // Get timer value, PW in uS, of HC-SRO4
+  93   1                      distmeas = (float) TimeDistMeas / 148.0;                                // Compute distance measured
+  94   1                      
+  95   1                      //sprintf( dispbuff, "%.2f", distmeas );                                        // Convert distmeas to a string to print on LCD
+  96   1      /*              sprintf( dispbuff, "%d", (int)distmeas );                                       // Convert distmeas to a string to print on LCD
+  97   1                      LCD_Position( 0, 11 );                                                                  // Position cursor
+  98   1                      LCD_PrintString( dispbuff );
+  99   1      */
+ 100   1                      CyDelay( delay );       }
+ 101          uint8 get_width(uint8 volt)
+ 102          {
+ 103   1      if (volt<0x0C) return 5; //12 0x0C
+ 104   1      else if (volt<0x19) return 6; //25 0x19
+ 105   1      else if (volt<0x26) return 7; //38 0x26 
+ 106   1      else if (volt<0x32) return 8; //50 0x32
+ 107   1      else if (volt<0x3e) return 9; //62 0x3e
+ 108   1      else if (volt<0x4B) return 10; //75 0x4b
+ 109   1      else if (volt<0x57) return 11; //87 0x57
+ 110   1      else if (volt<0x64) return 12; //100 0x64
+ 111   1      else if (volt<0x70) return 13; //112 0x70
+ 112   1      else if (volt<0x7D) return 14; //125 0x7d
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 3   
+
+ 113   1      else if (volt<0x89) return 15; //137 0x89
+ 114   1      else if (volt<0x96) return 16; //150 0x96
+ 115   1      else if (volt<0xA2) return 17; //162 0xA2
+ 116   1      else if (volt<0xAF) return 18; //175 0xAF
+ 117   1      else if (volt<0xBB) return 19; //187 0xBB
+ 118   1      else if (volt<0xC8) return 20; //200 0xC8
+ 119   1      else if (volt<0xD4) return 21; //212 0xD4
+ 120   1      else if (volt<0xE1) return 22; //225 0xE1
+ 121   1      else if (volt<0xED) return 23; //237 0xED
+ 122   1      else if (volt<0xFA) return 24; //250 0xFA
+ 123   1      else if (volt>0xFA) return 25; //250 0xFA
+ 124   1      }
+ 125          /* [] END OF FILE */
+*** WARNING C291 IN LINE 124 OF .\main.c: not every exit path returns a value
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 4   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 23
+                                           ; SOURCE LINE # 24
+                                           ; SOURCE LINE # 26
+0000 900000      R     MOV     DPTR,#true
+0003 7401              MOV     A,#01H
+0005 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 27
+0006 900000      R     MOV     DPTR,#contador
+0009 7405              MOV     A,#05H
+000B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 28
+000C 900000      R     MOV     DPTR,#delay
+000F 74C8              MOV     A,#0C8H
+0011 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 29
+0012 120000      E     LCALL   Clock_Start
+                                           ; SOURCE LINE # 30
+0015 120000      E     LCALL   PWM_Start
+                                           ; SOURCE LINE # 31
+0018 120000      E     LCALL   ADC_Start
+                                           ; SOURCE LINE # 32
+001B 120000      E     LCALL   LCD_Start
+                                           ; SOURCE LINE # 33
+001E 7D00              MOV     R5,#00H
+0020 7F00              MOV     R7,#00H
+0022 120000      E     LCALL   _LCD_Position
+                                           ; SOURCE LINE # 34
+0025 7BFF              MOV     R3,#0FFH
+0027 7A00        R     MOV     R2,#HIGH ?SC_0
+0029 7900        R     MOV     R1,#LOW ?SC_0
+002B 120000      E     LCALL   _LCD_PrintString
+                                           ; SOURCE LINE # 35
+002E D2AF              SETB    EA
+0030 9044F4            MOV     DPTR,#044F4H
+0033 74FD              MOV     A,#0FDH
+0035 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 36
+0036 120000      E     LCALL   TimeDistMeas_Start
+                                           ; SOURCE LINE # 39
+0039         ?C0001:
+                                           ; SOURCE LINE # 40
+                                           ; SOURCE LINE # 42
+0039 120000      R     LCALL   ServoMotor
+                                           ; SOURCE LINE # 44
+003C 80FB              SJMP    ?C0001
+003E 22                RET     
+             ; FUNCTION main (END)
+
+             ; FUNCTION ServoMotor (BEGIN)
+                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 47
+                                           ; SOURCE LINE # 48
+0000 120000      E     LCALL   ADC_StartConvert
+                                           ; SOURCE LINE # 49
+0003 7F00              MOV     R7,#00H
+0005 120000      E     LCALL   _ADC_IsEndConversion
+                                           ; SOURCE LINE # 50
+0008 120000      E     LCALL   ADC_GetResult8
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 5   
+
+000B 900000      R     MOV     DPTR,#Potential
+000E EF                MOV     A,R7
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 51
+0010 900000      R     MOV     DPTR,#Potential
+0013 E0                MOVX    A,@DPTR
+0014 FF                MOV     R7,A
+0015 120000      R     LCALL   _get_width
+0018 900000      R     MOV     DPTR,#delay
+001B EF                MOV     A,R7
+001C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 52
+001D 900000      R     MOV     DPTR,#contador
+0020 E0                MOVX    A,@DPTR
+0021 FF                MOV     R7,A
+0022 EF                MOV     A,R7
+0023 D3                SETB    C
+0024 9419              SUBB    A,#019H
+0026 5004              JNC     ?C0005
+0028 7F01              MOV     R7,#01H
+002A 8002              SJMP    ?C0006
+002C         ?C0005:
+002C 7F00              MOV     R7,#00H
+002E         ?C0006:
+002E 900000      R     MOV     DPTR,#contador
+0031 E0                MOVX    A,@DPTR
+0032 FE                MOV     R6,A
+0033 EE                MOV     A,R6
+0034 C3                CLR     C
+0035 9405              SUBB    A,#05H
+0037 4004              JC      ?C0007
+0039 7E01              MOV     R6,#01H
+003B 8002              SJMP    ?C0008
+003D         ?C0007:
+003D 7E00              MOV     R6,#00H
+003F         ?C0008:
+003F EE                MOV     A,R6
+0040 5F                ANL     A,R7
+0041 FF                MOV     R7,A
+0042 EF                MOV     A,R7
+0043 6025              JZ      ?C0004
+                                           ; SOURCE LINE # 53
+0045 900000      R     MOV     DPTR,#true
+0048 E0                MOVX    A,@DPTR
+0049 FF                MOV     R7,A
+004A EF                MOV     A,R7
+004B B4010E            CJNE    A,#01H,?C0009
+                                           ; SOURCE LINE # 54
+004E 900000      R     MOV     DPTR,#contador
+0051 E0                MOVX    A,@DPTR
+0052 FF                MOV     R7,A
+0053 04                INC     A
+0054 F0                MOVX    @DPTR,A
+0055 900000      R     MOV     DPTR,#Width
+0058 EF                MOV     A,R7
+0059 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 56
+005A 8032              SJMP    ?C0011
+005C         ?C0009:
+                                           ; SOURCE LINE # 57
+                                           ; SOURCE LINE # 58
+005C 900000      R     MOV     DPTR,#contador
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 6   
+
+005F E0                MOVX    A,@DPTR
+0060 FF                MOV     R7,A
+0061 14                DEC     A
+0062 F0                MOVX    @DPTR,A
+0063 900000      R     MOV     DPTR,#Width
+0066 EF                MOV     A,R7
+0067 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 60
+                                           ; SOURCE LINE # 61
+0068 8024              SJMP    ?C0011
+006A         ?C0004:
+                                           ; SOURCE LINE # 62
+006A 900000      R     MOV     DPTR,#contador
+006D E0                MOVX    A,@DPTR
+006E FF                MOV     R7,A
+006F EF                MOV     A,R7
+0070 D3                SETB    C
+0071 9419              SUBB    A,#019H
+0073 400D              JC      ?C0012
+                                           ; SOURCE LINE # 63
+0075 900000      R     MOV     DPTR,#true
+0078 E4                CLR     A
+0079 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 64
+007A 900000      R     MOV     DPTR,#contador
+007D E0                MOVX    A,@DPTR
+007E 14                DEC     A
+007F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 65
+0080 800C              SJMP    ?C0011
+0082         ?C0012:
+                                           ; SOURCE LINE # 66
+                                           ; SOURCE LINE # 67
+0082 900000      R     MOV     DPTR,#true
+0085 7401              MOV     A,#01H
+0087 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 68
+0088 900000      R     MOV     DPTR,#contador
+008B E0                MOVX    A,@DPTR
+008C 04                INC     A
+008D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 69
+008E         ?C0011:
+                                           ; SOURCE LINE # 71
+008E 900000      R     MOV     DPTR,#Width
+0091 E0                MOVX    A,@DPTR
+0092 FF                MOV     R7,A
+0093 EF                MOV     A,R7
+0094 D3                SETB    C
+0095 9409              SUBB    A,#09H
+0097 4004              JC      ?C0015
+0099 7F01              MOV     R7,#01H
+009B 8002              SJMP    ?C0016
+009D         ?C0015:
+009D 7F00              MOV     R7,#00H
+009F         ?C0016:
+009F 900000      R     MOV     DPTR,#Width
+00A2 E0                MOVX    A,@DPTR
+00A3 FE                MOV     R6,A
+00A4 EE                MOV     A,R6
+00A5 C3                CLR     C
+00A6 9414              SUBB    A,#014H
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 7   
+
+00A8 5004              JNC     ?C0017
+00AA 7E01              MOV     R6,#01H
+00AC 8002              SJMP    ?C0018
+00AE         ?C0017:
+00AE 7E00              MOV     R6,#00H
+00B0         ?C0018:
+00B0 EE                MOV     A,R6
+00B1 5F                ANL     A,R7
+00B2 FF                MOV     R7,A
+00B3 EF                MOV     A,R7
+00B4 6010              JZ      ?C0014
+00B6 900000      R     MOV     DPTR,#Width
+00B9 E0                MOVX    A,@DPTR
+00BA FF                MOV     R7,A
+00BB EF                MOV     A,R7
+00BC 2406              ADD     A,#06H
+00BE FF                MOV     R7,A
+00BF 900000      R     MOV     DPTR,#LCD_OutputString
+00C2 EF                MOV     A,R7
+00C3 F0                MOVX    @DPTR,A
+00C4 8025              SJMP    ?C0019
+00C6         ?C0014:
+                                           ; SOURCE LINE # 72
+00C6 900000      R     MOV     DPTR,#Width
+00C9 E0                MOVX    A,@DPTR
+00CA FF                MOV     R7,A
+00CB EF                MOV     A,R7
+00CC D3                SETB    C
+00CD 9413              SUBB    A,#013H
+00CF 4010              JC      ?C0020
+00D1 900000      R     MOV     DPTR,#Width
+00D4 E0                MOVX    A,@DPTR
+00D5 FF                MOV     R7,A
+00D6 EF                MOV     A,R7
+00D7 240C              ADD     A,#0CH
+00D9 FF                MOV     R7,A
+00DA 900000      R     MOV     DPTR,#LCD_OutputString
+00DD EF                MOV     A,R7
+00DE F0                MOVX    @DPTR,A
+00DF 800A              SJMP    ?C0019
+00E1         ?C0020:
+                                           ; SOURCE LINE # 73
+00E1 900000      R     MOV     DPTR,#Width
+00E4 E0                MOVX    A,@DPTR
+00E5 FF                MOV     R7,A
+00E6 900000      R     MOV     DPTR,#LCD_OutputString
+00E9 EF                MOV     A,R7
+00EA F0                MOVX    @DPTR,A
+00EB         ?C0019:
+                                           ; SOURCE LINE # 75
+00EB 7D0A              MOV     R5,#0AH
+00ED 7F00              MOV     R7,#00H
+00EF 120000      E     LCALL   _LCD_Position
+                                           ; SOURCE LINE # 76
+00F2 900000      R     MOV     DPTR,#LCD_OutputString
+00F5 E0                MOVX    A,@DPTR
+00F6 FF                MOV     R7,A
+00F7 120000      E     LCALL   _LCD_PrintInt8
+                                           ; SOURCE LINE # 77
+00FA 900000      R     MOV     DPTR,#Width
+00FD E0                MOVX    A,@DPTR
+00FE FF                MOV     R7,A
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 8   
+
+00FF 120000      E     LCALL   _PWM_WriteCompare
+                                           ; SOURCE LINE # 79
+0102 22                RET     
+             ; FUNCTION ServoMotor (END)
+
+             ; FUNCTION UltraSonido (BEGIN)
+                                           ; SOURCE LINE # 80
+                                           ; SOURCE LINE # 81
+0000         ?C0023:
+                                           ; SOURCE LINE # 82
+0000 120000      E     LCALL   DistOutHCSRO4_Read
+0003 EF                MOV     A,R7
+0004 701E              JNZ     ?C0025
+                                           ; SOURCE LINE # 84
+0006 7F01              MOV     R7,#01H
+0008 120000      E     LCALL   _Triggen_Write
+                                           ; SOURCE LINE # 85
+000B 7F0A              MOV     R7,#0AH
+000D 7E00              MOV     R6,#00H
+000F 120000      E     LCALL   _CyDelayUs
+                                           ; SOURCE LINE # 86
+0012 7F00              MOV     R7,#00H
+0014 120000      E     LCALL   _Triggen_Write
+                                           ; SOURCE LINE # 87
+0017 7F01              MOV     R7,#01H
+0019 7E00              MOV     R6,#00H
+001B 7D00              MOV     R5,#00H
+001D 7C00              MOV     R4,#00H
+001F 120000      E     LCALL   _?CyDelay
+                                           ; SOURCE LINE # 89
+0022 80DC              SJMP    ?C0023
+0024         ?C0025:
+                                           ; SOURCE LINE # 90
+0024 120000      E     LCALL   DistOutHCSRO4_Read
+0027 EF                MOV     A,R7
+0028 6401              XRL     A,#01H
+002A 60F8              JZ      ?C0025
+002C         ?C0026:
+                                           ; SOURCE LINE # 92
+002C 120000      E     LCALL   TimeDistMeas_ReadCounter
+002F C3                CLR     C
+0030 74FF              MOV     A,#0FFH
+0032 9F                SUBB    A,R7
+0033 FF                MOV     R7,A
+0034 74FF              MOV     A,#0FFH
+0036 9E                SUBB    A,R6
+0037 FE                MOV     R6,A
+0038 900000      R     MOV     DPTR,#TimeDistMeas
+003B EE                MOV     A,R6
+003C F0                MOVX    @DPTR,A
+003D A3                INC     DPTR
+003E EF                MOV     A,R7
+003F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 93
+0040 900000      R     MOV     DPTR,#TimeDistMeas
+0043 E0                MOVX    A,@DPTR
+0044 FC                MOV     R4,A
+0045 A3                INC     DPTR
+0046 E0                MOVX    A,@DPTR
+0047 FD                MOV     R5,A
+0048 E4                CLR     A
+0049 120000      E     LCALL   ?C?FCASTI
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 9   
+
+004C 7B00              MOV     R3,#00H
+004E 7A00              MOV     R2,#00H
+0050 7914              MOV     R1,#014H
+0052 7843              MOV     R0,#043H
+0054 120000      E     LCALL   ?C?FPDIV
+0057 900000      R     MOV     DPTR,#distmeas
+005A 120000      E     LCALL   ?C?LSTXDATA
+                                           ; SOURCE LINE # 100
+005D 900000      R     MOV     DPTR,#delay
+0060 E0                MOVX    A,@DPTR
+0061 FF                MOV     R7,A
+0062 E4                CLR     A
+0063 FC                MOV     R4,A
+0064 FD                MOV     R5,A
+0065 FE                MOV     R6,A
+0066 120000      E     LCALL   _?CyDelay
+0069 22                RET     
+             ; FUNCTION UltraSonido (END)
+
+             ; FUNCTION _get_width (BEGIN)
+                                           ; SOURCE LINE # 101
+0000 900000      R     MOV     DPTR,#volt
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 102
+                                           ; SOURCE LINE # 103
+0005 900000      R     MOV     DPTR,#volt
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+000A EF                MOV     A,R7
+000B C3                CLR     C
+000C 940C              SUBB    A,#0CH
+000E 5003              JNC     ?C0028
+0010 7F05              MOV     R7,#05H
+0012 22                RET     
+0013         ?C0028:
+                                           ; SOURCE LINE # 104
+0013 900000      R     MOV     DPTR,#volt
+0016 E0                MOVX    A,@DPTR
+0017 FF                MOV     R7,A
+0018 EF                MOV     A,R7
+0019 C3                CLR     C
+001A 9419              SUBB    A,#019H
+001C 5003              JNC     ?C0031
+001E 7F06              MOV     R7,#06H
+0020 22                RET     
+0021         ?C0031:
+                                           ; SOURCE LINE # 105
+0021 900000      R     MOV     DPTR,#volt
+0024 E0                MOVX    A,@DPTR
+0025 FF                MOV     R7,A
+0026 EF                MOV     A,R7
+0027 C3                CLR     C
+0028 9426              SUBB    A,#026H
+002A 5003              JNC     ?C0033
+002C 7F07              MOV     R7,#07H
+002E 22                RET     
+002F         ?C0033:
+                                           ; SOURCE LINE # 106
+002F 900000      R     MOV     DPTR,#volt
+0032 E0                MOVX    A,@DPTR
+0033 FF                MOV     R7,A
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 10  
+
+0034 EF                MOV     A,R7
+0035 C3                CLR     C
+0036 9432              SUBB    A,#032H
+0038 5003              JNC     ?C0035
+003A 7F08              MOV     R7,#08H
+003C 22                RET     
+003D         ?C0035:
+                                           ; SOURCE LINE # 107
+003D 900000      R     MOV     DPTR,#volt
+0040 E0                MOVX    A,@DPTR
+0041 FF                MOV     R7,A
+0042 EF                MOV     A,R7
+0043 C3                CLR     C
+0044 943E              SUBB    A,#03EH
+0046 5003              JNC     ?C0037
+0048 7F09              MOV     R7,#09H
+004A 22                RET     
+004B         ?C0037:
+                                           ; SOURCE LINE # 108
+004B 900000      R     MOV     DPTR,#volt
+004E E0                MOVX    A,@DPTR
+004F FF                MOV     R7,A
+0050 EF                MOV     A,R7
+0051 C3                CLR     C
+0052 944B              SUBB    A,#04BH
+0054 5003              JNC     ?C0039
+0056 7F0A              MOV     R7,#0AH
+0058 22                RET     
+0059         ?C0039:
+                                           ; SOURCE LINE # 109
+0059 900000      R     MOV     DPTR,#volt
+005C E0                MOVX    A,@DPTR
+005D FF                MOV     R7,A
+005E EF                MOV     A,R7
+005F C3                CLR     C
+0060 9457              SUBB    A,#057H
+0062 5003              JNC     ?C0041
+0064 7F0B              MOV     R7,#0BH
+0066 22                RET     
+0067         ?C0041:
+                                           ; SOURCE LINE # 110
+0067 900000      R     MOV     DPTR,#volt
+006A E0                MOVX    A,@DPTR
+006B FF                MOV     R7,A
+006C EF                MOV     A,R7
+006D C3                CLR     C
+006E 9464              SUBB    A,#064H
+0070 5003              JNC     ?C0043
+0072 7F0C              MOV     R7,#0CH
+0074 22                RET     
+0075         ?C0043:
+                                           ; SOURCE LINE # 111
+0075 900000      R     MOV     DPTR,#volt
+0078 E0                MOVX    A,@DPTR
+0079 FF                MOV     R7,A
+007A EF                MOV     A,R7
+007B C3                CLR     C
+007C 9470              SUBB    A,#070H
+007E 5003              JNC     ?C0045
+0080 7F0D              MOV     R7,#0DH
+0082 22                RET     
+0083         ?C0045:
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 11  
+
+                                           ; SOURCE LINE # 112
+0083 900000      R     MOV     DPTR,#volt
+0086 E0                MOVX    A,@DPTR
+0087 FF                MOV     R7,A
+0088 EF                MOV     A,R7
+0089 C3                CLR     C
+008A 947D              SUBB    A,#07DH
+008C 5003              JNC     ?C0047
+008E 7F0E              MOV     R7,#0EH
+0090 22                RET     
+0091         ?C0047:
+                                           ; SOURCE LINE # 113
+0091 900000      R     MOV     DPTR,#volt
+0094 E0                MOVX    A,@DPTR
+0095 FF                MOV     R7,A
+0096 EF                MOV     A,R7
+0097 C3                CLR     C
+0098 9489              SUBB    A,#089H
+009A 5003              JNC     ?C0049
+009C 7F0F              MOV     R7,#0FH
+009E 22                RET     
+009F         ?C0049:
+                                           ; SOURCE LINE # 114
+009F 900000      R     MOV     DPTR,#volt
+00A2 E0                MOVX    A,@DPTR
+00A3 FF                MOV     R7,A
+00A4 EF                MOV     A,R7
+00A5 C3                CLR     C
+00A6 9496              SUBB    A,#096H
+00A8 5003              JNC     ?C0051
+00AA 7F10              MOV     R7,#010H
+00AC 22                RET     
+00AD         ?C0051:
+                                           ; SOURCE LINE # 115
+00AD 900000      R     MOV     DPTR,#volt
+00B0 E0                MOVX    A,@DPTR
+00B1 FF                MOV     R7,A
+00B2 EF                MOV     A,R7
+00B3 C3                CLR     C
+00B4 94A2              SUBB    A,#0A2H
+00B6 5003              JNC     ?C0053
+00B8 7F11              MOV     R7,#011H
+00BA 22                RET     
+00BB         ?C0053:
+                                           ; SOURCE LINE # 116
+00BB 900000      R     MOV     DPTR,#volt
+00BE E0                MOVX    A,@DPTR
+00BF FF                MOV     R7,A
+00C0 EF                MOV     A,R7
+00C1 C3                CLR     C
+00C2 94AF              SUBB    A,#0AFH
+00C4 5003              JNC     ?C0055
+00C6 7F12              MOV     R7,#012H
+00C8 22                RET     
+00C9         ?C0055:
+                                           ; SOURCE LINE # 117
+00C9 900000      R     MOV     DPTR,#volt
+00CC E0                MOVX    A,@DPTR
+00CD FF                MOV     R7,A
+00CE EF                MOV     A,R7
+00CF C3                CLR     C
+00D0 94BB              SUBB    A,#0BBH
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 12  
+
+00D2 5003              JNC     ?C0057
+00D4 7F13              MOV     R7,#013H
+00D6 22                RET     
+00D7         ?C0057:
+                                           ; SOURCE LINE # 118
+00D7 900000      R     MOV     DPTR,#volt
+00DA E0                MOVX    A,@DPTR
+00DB FF                MOV     R7,A
+00DC EF                MOV     A,R7
+00DD C3                CLR     C
+00DE 94C8              SUBB    A,#0C8H
+00E0 5003              JNC     ?C0059
+00E2 7F14              MOV     R7,#014H
+00E4 22                RET     
+00E5         ?C0059:
+                                           ; SOURCE LINE # 119
+00E5 900000      R     MOV     DPTR,#volt
+00E8 E0                MOVX    A,@DPTR
+00E9 FF                MOV     R7,A
+00EA EF                MOV     A,R7
+00EB C3                CLR     C
+00EC 94D4              SUBB    A,#0D4H
+00EE 5003              JNC     ?C0061
+00F0 7F15              MOV     R7,#015H
+00F2 22                RET     
+00F3         ?C0061:
+                                           ; SOURCE LINE # 120
+00F3 900000      R     MOV     DPTR,#volt
+00F6 E0                MOVX    A,@DPTR
+00F7 FF                MOV     R7,A
+00F8 EF                MOV     A,R7
+00F9 C3                CLR     C
+00FA 94E1              SUBB    A,#0E1H
+00FC 5003              JNC     ?C0063
+00FE 7F16              MOV     R7,#016H
+0100 22                RET     
+0101         ?C0063:
+                                           ; SOURCE LINE # 121
+0101 900000      R     MOV     DPTR,#volt
+0104 E0                MOVX    A,@DPTR
+0105 FF                MOV     R7,A
+0106 EF                MOV     A,R7
+0107 C3                CLR     C
+0108 94ED              SUBB    A,#0EDH
+010A 5003              JNC     ?C0065
+010C 7F17              MOV     R7,#017H
+010E 22                RET     
+010F         ?C0065:
+                                           ; SOURCE LINE # 122
+010F 900000      R     MOV     DPTR,#volt
+0112 E0                MOVX    A,@DPTR
+0113 FF                MOV     R7,A
+0114 EF                MOV     A,R7
+0115 C3                CLR     C
+0116 94FA              SUBB    A,#0FAH
+0118 5003              JNC     ?C0067
+011A 7F18              MOV     R7,#018H
+011C 22                RET     
+011D         ?C0067:
+                                           ; SOURCE LINE # 123
+011D 900000      R     MOV     DPTR,#volt
+0120 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   MAIN                                                                  05/20/2016 15:04:42 PAGE 13  
+
+0121 FF                MOV     R7,A
+0122 EF                MOV     A,R7
+0123 D3                SETB    C
+0124 94FA              SUBB    A,#0FAH
+0126 4002              JC      ?C0029
+0128 7F19              MOV     R7,#019H
+                                           ; SOURCE LINE # 124
+012A         ?C0029:
+012A 22                RET     
+             ; FUNCTION _get_width (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    727    ----
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =     32       1
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

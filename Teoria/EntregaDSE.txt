@@ -1,0 +1,139 @@
+Pregunta 1-Los semiconductores se dividen en 
+1. aislantes
+2. intrínsecos
+3. extrínsecos
+4. intrínsecos y extrínsecos
+ANSWER: 4
+
+Pregunta 2-Los resistencias cumplen  
+1. Ley de Ohm
+2. Ley de Bolton
+3. Ley de Coulomb
+4. Ley de Newton
+ANSWER: 1
+
+Pregunta 3-La primera cifra para una resistencia de color violeta es
+1. 4
+2. 7
+3. 5
+4. 0
+ANSWER: 2
+
+Pregunta 4-Cuando un diodo se conecta a una tensión eléctrica, se dice que está
+1. cargado
+2. aislante
+3. polarizado
+4. destruido
+ANSWER: 3
+
+Pregunta 5-Los interruptores de movimiento se activan cuando 
+1. se produce una inclinación
+2. se activa un flanco de reloj
+3. se llega a una zona critica del circuito
+4. ninguna de las anteriores
+ANSWER: 1
+
+Pregunta 6-Un sensor se encarga de  
+1. detectar lo que sucede en el ambiente 
+2. agradar a cualquier persona
+3. obtener energia
+4. cargar el condensador
+ANSWER: 1
+
+Pregunta 7-Un termistor es 
+1. resistencia que varía en función de la temperatura
+2. condensador
+3. fuente de alimentación
+4. LED
+ANSWER: 1
+
+Pregunta 8-Un optointerruptor está formado por
+1. Diodo LED y un fototransistor
+2. Patillas 
+3. LEDs
+4. Diodos
+ANSWER: 1
+
+Pregunta 9-Un fotodiodo se encarga de 
+1. formar diodos
+2. convertir transistores
+3. crear resistencias
+4. convertir la señal de luz en señal eléctrica
+ANSWER: 4
+
+Pregunta 10-Un zumbador
+1. se encarga de avisar acústicamente a un dispositivo
+2. manda anuncios
+3. genera iluminación
+4. controla el tráfico
+ANSWER: 1
+
+Pregunta 11- V+ se llama
+1. Entrada inversora
+2. Entrada no inversora
+3. Alimentación negativa
+4. Vout
+ANSWER: 2
+
+Pregunta 12-Un optoaislador implica
+1. detectar señales
+2. convertir una señal eléctrica en una señal óptica
+3. filtrar cambios
+4. generar zumbadores
+ANSWER: 2
+
+Pregunta 13- Un filtro pasa baja acepta la transmisión 
+1. De todas las frecuencias desde 0 hasta 3
+2. De todas las frecuencias desde 0 hasta cierto valor
+3. De todas las frecuencias desde -20 hasta 1
+4. Ninguna es cierta.
+ANSWER: 2
+
+Pregunta 14- Un puente de Wheatstone se utiliza para
+1. Convertir señales
+2. Balancear puentes
+3. Convertir un cambio de resistencia a uno de voltaje
+4. Crear puentes
+ANSWER: 3
+
+Pregunta 15- La conversión de señales analógicas a digitales implica
+1. Crear un manipulador de señal analógica
+2. Mandar muestras 
+3. Conversión de las primeras a palabras binarias
+4. Muestreo de señal
+ANSWER: 3
+
+Pregunta 16- Un multiplexor selecciona
+1. Una entrada y produce una salida 
+2. Crear entradas
+3. Convierte circuitos
+4. Manda respuestas
+ANSWER: 1
+
+Pregunta 17- Una puerta AND con entradas A,B y C genera
+1. C=A.B
+2. C=A+B
+3. C=A
+4. B
+ANSWER: 1
+
+Pregunta 18- Una puerta OR con entradas A,B y C genera
+1. C=A.B
+2. C=A+B
+3. C=A
+4. C=B
+ANSWER: 2
+
+Pregunta 19-La magnitud del voltaje depende de
+1. Duración del pulso
+2. frecuencia de la señal
+3. voltaje de la señal
+4. Amplitud
+ANSWER: 1
+
+Pregunta 20- PWM son las siglas en ingles de 
+1. Modulación por ancho de pulso
+2. Modulación por frecuencia de uso
+3. Modulación por onda
+4. Ninguna de las anteriores
+ANSWER: 1

@@ -1,0 +1,11 @@
+--------------- Build Started: 09/18/2016 17:40:41 Project: UART_Rx01, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+The code generation step is up to date.
+The compile step is up to date, no work needs to be done.
+arm-none-eabi-ar.exe -rs .\ARM_GCC_493\Debug\UART_Rx01.a .\ARM_GCC_493\Debug\cyfitter_cfg.o .\ARM_GCC_493\Debug\LCD_Char_1.o .\ARM_GCC_493\Debug\LCD_Char_1_PM.o .\ARM_GCC_493\Debug\LCD_Char_1_LCDPort.o .\ARM_GCC_493\Debug\CyBootAsmGnu.o .\ARM_GCC_493\Debug\CyDmac.o .\ARM_GCC_493\Debug\CyFlash.o .\ARM_GCC_493\Debug\CyLib.o .\ARM_GCC_493\Debug\cyPm.o .\ARM_GCC_493\Debug\CySpc.o .\ARM_GCC_493\Debug\cyutils.o
+arm-none-eabi-ar.exe: creating .\ARM_GCC_493\Debug\UART_Rx01.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o .\ARM_GCC_493\Debug\UART_Rx01.elf .\ARM_GCC_493\Debug\main.o .\ARM_GCC_493\Debug\cymetadata.o .\ARM_GCC_493\Debug\Cm3Start.o .\ARM_GCC_493\Debug\UART_Rx01.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -O0 -ffat-lto-objects -L Generated_Source\PSoC5 -Wl,-Map,.\ARM_GCC_493\Debug/UART_Rx01.map -T Generated_Source\PSoC5\cm3gcc.ld -nodefaultlibs -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
+.\ARM_GCC_493\Debug\main.o: In function `main':
+C:\Users\Jose Antonio\Documents\PSOC Creator\ProyectosPSOC\UART_Rx01.cydsn/.\main.c:39: undefined reference to `Rx_1_Read'
+collect2.exe: error: ld returned 1 exit status
+The command 'arm-none-eabi-gcc.exe' failed with exit code '1'.
+--------------- Build Failed: 09/18/2016 17:40:42 ---------------

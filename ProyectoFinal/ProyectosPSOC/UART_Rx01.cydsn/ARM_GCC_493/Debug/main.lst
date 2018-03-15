@@ -1,0 +1,639 @@
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 486F6C61 		.ascii	"Hola Amigo!\000"
+  21      20416D69 
+  21      676F2100 
+  22              		.section	.text.main,"ax",%progbits
+  23              		.align	2
+  24              		.global	main
+  25              		.thumb
+  26              		.thumb_func
+  27              		.type	main, %function
+  28              	main:
+  29              	.LFB63:
+  30              		.file 1 ".\\main.c"
+   1:.\main.c      **** /*******************************************************************************
+   2:.\main.c      **** * File Name: main.c
+   3:.\main.c      **** *
+   4:.\main.c      **** * Version: 2.1
+   5:.\main.c      **** *
+   6:.\main.c      **** * Description:
+   7:.\main.c      **** *  This project demonstrates the UART reception mechanism. 
+   8:.\main.c      **** *  Data typed on the hyperterminal is sent through serial port and displayed
+   9:.\main.c      **** *  on the LCD.
+  10:.\main.c      **** *
+  11:.\main.c      **** ********************************************************************************
+  12:.\main.c      **** * Copyright 2012, Cypress Semiconductor Corporation. All rights reserved.
+  13:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation and is protected
+  14:.\main.c      **** * by and subject to worldwide patent and copyright laws and treaties.
+  15:.\main.c      **** * Therefore, you may use this software only as provided in the license agreement
+  16:.\main.c      **** * accompanying the software package from which you obtained this software.
+  17:.\main.c      **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  18:.\main.c      **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  19:.\main.c      **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  20:.\main.c      **** *******************************************************************************/
+  21:.\main.c      **** 
+  22:.\main.c      **** #include <project.h>
+  23:.\main.c      **** 
+  24:.\main.c      **** #define LCD_NUM_COLUMNS (16u)
+  25:.\main.c      **** 
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 2
+
+
+  26:.\main.c      **** 
+  27:.\main.c      **** int main()
+  28:.\main.c      **** {   
+  31              		.loc 1 28 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 8
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35 0000 80B5     		push	{r7, lr}
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 7, -8
+  38              		.cfi_offset 14, -4
+  39 0002 82B0     		sub	sp, sp, #8
+  40              		.cfi_def_cfa_offset 16
+  41 0004 00AF     		add	r7, sp, #0
+  42              		.cfi_def_cfa_register 7
+  29:.\main.c      ****     char8 ch;       /* Data received from the Serial port */
+  30:.\main.c      ****     uint8 count = 0u;
+  43              		.loc 1 30 0
+  44 0006 0023     		movs	r3, #0
+  45 0008 FB71     		strb	r3, [r7, #7]
+  31:.\main.c      ****     uint8 pos = 0u;
+  46              		.loc 1 31 0
+  47 000a 0023     		movs	r3, #0
+  48 000c BB71     		strb	r3, [r7, #6]
+  32:.\main.c      **** 
+  33:.\main.c      ****     CyGlobalIntEnable; /* Enable all interrupts by the processor. */
+  49              		.loc 1 33 0
+  50              	@ 33 ".\main.c" 1
+  51 000e 62B6     		CPSIE   i
+  52              	@ 0 "" 2
+  53              		.thumb
+  54              	.L5:
+  55              	.LBB2:
+  34:.\main.c      **** 
+  35:.\main.c      **** 
+  36:.\main.c      ****     while(1)
+  37:.\main.c      ****     {
+  38:.\main.c      ****         /* Check the UART status */
+  39:.\main.c      ****         while(Rx_1_Read()==1){
+  56              		.loc 1 39 0 discriminator 2
+  57 0010 00BF     		nop
+  58 0012 FFF7FEFF 		bl	Rx_1_Read
+  59 0016 0346     		mov	r3, r0
+  60 0018 012B     		cmp	r3, #1
+  61 001a 03D1     		bne	.L6
+  40:.\main.c      ****         LCD_Char_1_PrintString("Hola Amigo!");
+  62              		.loc 1 40 0
+  63 001c 0248     		ldr	r0, .L7
+  64 001e FFF7FEFF 		bl	LCD_Char_1_PrintString
+  65              	.L3:
+  41:.\main.c      ****         while(1);
+  66              		.loc 1 41 0 discriminator 1
+  67 0022 FEE7     		b	.L3
+  68              	.L6:
+  69              	.LBE2:
+  42:.\main.c      ****     }
+  43:.\main.c      ****     }
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 3
+
+
+  70              		.loc 1 43 0
+  71 0024 F4E7     		b	.L5
+  72              	.L8:
+  73 0026 00BF     		.align	2
+  74              	.L7:
+  75 0028 00000000 		.word	.LC0
+  76              		.cfi_endproc
+  77              	.LFE63:
+  78              		.size	main, .-main
+  79              		.text
+  80              	.Letext0:
+  81              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  82              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  83              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+  84              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+  85              		.section	.debug_info,"",%progbits
+  86              	.Ldebug_info0:
+  87 0000 1A010000 		.4byte	0x11a
+  88 0004 0400     		.2byte	0x4
+  89 0006 00000000 		.4byte	.Ldebug_abbrev0
+  90 000a 04       		.byte	0x4
+  91 000b 01       		.uleb128 0x1
+  92 000c 94000000 		.4byte	.LASF18
+  93 0010 01       		.byte	0x1
+  94 0011 22010000 		.4byte	.LASF19
+  95 0015 4B010000 		.4byte	.LASF20
+  96 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  97 001d 00000000 		.4byte	0
+  98 0021 00000000 		.4byte	.Ldebug_line0
+  99 0025 02       		.uleb128 0x2
+ 100 0026 01       		.byte	0x1
+ 101 0027 06       		.byte	0x6
+ 102 0028 3F010000 		.4byte	.LASF0
+ 103 002c 02       		.uleb128 0x2
+ 104 002d 01       		.byte	0x1
+ 105 002e 08       		.byte	0x8
+ 106 002f 72000000 		.4byte	.LASF1
+ 107 0033 02       		.uleb128 0x2
+ 108 0034 02       		.byte	0x2
+ 109 0035 05       		.byte	0x5
+ 110 0036 A6010000 		.4byte	.LASF2
+ 111 003a 02       		.uleb128 0x2
+ 112 003b 02       		.byte	0x2
+ 113 003c 07       		.byte	0x7
+ 114 003d 0E000000 		.4byte	.LASF3
+ 115 0041 03       		.uleb128 0x3
+ 116 0042 96010000 		.4byte	.LASF9
+ 117 0046 02       		.byte	0x2
+ 118 0047 3F       		.byte	0x3f
+ 119 0048 4C000000 		.4byte	0x4c
+ 120 004c 02       		.uleb128 0x2
+ 121 004d 04       		.byte	0x4
+ 122 004e 05       		.byte	0x5
+ 123 004f 8B000000 		.4byte	.LASF4
+ 124 0053 02       		.uleb128 0x2
+ 125 0054 04       		.byte	0x4
+ 126 0055 07       		.byte	0x7
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 4
+
+
+ 127 0056 43000000 		.4byte	.LASF5
+ 128 005a 02       		.uleb128 0x2
+ 129 005b 08       		.byte	0x8
+ 130 005c 05       		.byte	0x5
+ 131 005d 00000000 		.4byte	.LASF6
+ 132 0061 02       		.uleb128 0x2
+ 133 0062 08       		.byte	0x8
+ 134 0063 07       		.byte	0x7
+ 135 0064 55000000 		.4byte	.LASF7
+ 136 0068 04       		.uleb128 0x4
+ 137 0069 04       		.byte	0x4
+ 138 006a 05       		.byte	0x5
+ 139 006b 696E7400 		.ascii	"int\000"
+ 140 006f 02       		.uleb128 0x2
+ 141 0070 04       		.byte	0x4
+ 142 0071 07       		.byte	0x7
+ 143 0072 21000000 		.4byte	.LASF8
+ 144 0076 03       		.uleb128 0x3
+ 145 0077 B0010000 		.4byte	.LASF10
+ 146 007b 03       		.byte	0x3
+ 147 007c 2C       		.byte	0x2c
+ 148 007d 41000000 		.4byte	0x41
+ 149 0081 05       		.uleb128 0x5
+ 150 0082 3D000000 		.4byte	.LASF11
+ 151 0086 04       		.byte	0x4
+ 152 0087 9201     		.2byte	0x192
+ 153 0089 2C000000 		.4byte	0x2c
+ 154 008d 02       		.uleb128 0x2
+ 155 008e 04       		.byte	0x4
+ 156 008f 04       		.byte	0x4
+ 157 0090 A0010000 		.4byte	.LASF12
+ 158 0094 02       		.uleb128 0x2
+ 159 0095 08       		.byte	0x8
+ 160 0096 04       		.byte	0x4
+ 161 0097 2B010000 		.4byte	.LASF13
+ 162 009b 05       		.uleb128 0x5
+ 163 009c 6C000000 		.4byte	.LASF14
+ 164 00a0 04       		.byte	0x4
+ 165 00a1 A301     		.2byte	0x1a3
+ 166 00a3 A7000000 		.4byte	0xa7
+ 167 00a7 02       		.uleb128 0x2
+ 168 00a8 01       		.byte	0x1
+ 169 00a9 08       		.byte	0x8
+ 170 00aa 80000000 		.4byte	.LASF15
+ 171 00ae 02       		.uleb128 0x2
+ 172 00af 04       		.byte	0x4
+ 173 00b0 07       		.byte	0x7
+ 174 00b1 B8010000 		.4byte	.LASF16
+ 175 00b5 06       		.uleb128 0x6
+ 176 00b6 38000000 		.4byte	.LASF21
+ 177 00ba 01       		.byte	0x1
+ 178 00bb 1B       		.byte	0x1b
+ 179 00bc 68000000 		.4byte	0x68
+ 180 00c0 00000000 		.4byte	.LFB63
+ 181 00c4 2C000000 		.4byte	.LFE63-.LFB63
+ 182 00c8 01       		.uleb128 0x1
+ 183 00c9 9C       		.byte	0x9c
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 5
+
+
+ 184 00ca 0C010000 		.4byte	0x10c
+ 185 00ce 07       		.uleb128 0x7
+ 186 00cf 636800   		.ascii	"ch\000"
+ 187 00d2 01       		.byte	0x1
+ 188 00d3 1D       		.byte	0x1d
+ 189 00d4 9B000000 		.4byte	0x9b
+ 190 00d8 08       		.uleb128 0x8
+ 191 00d9 85000000 		.4byte	.LASF17
+ 192 00dd 01       		.byte	0x1
+ 193 00de 1E       		.byte	0x1e
+ 194 00df 81000000 		.4byte	0x81
+ 195 00e3 02       		.uleb128 0x2
+ 196 00e4 91       		.byte	0x91
+ 197 00e5 77       		.sleb128 -9
+ 198 00e6 09       		.uleb128 0x9
+ 199 00e7 706F7300 		.ascii	"pos\000"
+ 200 00eb 01       		.byte	0x1
+ 201 00ec 1F       		.byte	0x1f
+ 202 00ed 81000000 		.4byte	0x81
+ 203 00f1 02       		.uleb128 0x2
+ 204 00f2 91       		.byte	0x91
+ 205 00f3 76       		.sleb128 -10
+ 206 00f4 0A       		.uleb128 0xa
+ 207 00f5 10000000 		.4byte	.LBB2
+ 208 00f9 14000000 		.4byte	.LBE2-.LBB2
+ 209 00fd 0B       		.uleb128 0xb
+ 210 00fe 2E000000 		.4byte	.LASF22
+ 211 0102 01       		.byte	0x1
+ 212 0103 27       		.byte	0x27
+ 213 0104 68000000 		.4byte	0x68
+ 214 0108 0C       		.uleb128 0xc
+ 215 0109 00       		.byte	0
+ 216 010a 00       		.byte	0
+ 217 010b 00       		.byte	0
+ 218 010c 0D       		.uleb128 0xd
+ 219 010d 32010000 		.4byte	.LASF23
+ 220 0111 05       		.byte	0x5
+ 221 0112 9606     		.2byte	0x696
+ 222 0114 18010000 		.4byte	0x118
+ 223 0118 0E       		.uleb128 0xe
+ 224 0119 76000000 		.4byte	0x76
+ 225 011d 00       		.byte	0
+ 226              		.section	.debug_abbrev,"",%progbits
+ 227              	.Ldebug_abbrev0:
+ 228 0000 01       		.uleb128 0x1
+ 229 0001 11       		.uleb128 0x11
+ 230 0002 01       		.byte	0x1
+ 231 0003 25       		.uleb128 0x25
+ 232 0004 0E       		.uleb128 0xe
+ 233 0005 13       		.uleb128 0x13
+ 234 0006 0B       		.uleb128 0xb
+ 235 0007 03       		.uleb128 0x3
+ 236 0008 0E       		.uleb128 0xe
+ 237 0009 1B       		.uleb128 0x1b
+ 238 000a 0E       		.uleb128 0xe
+ 239 000b 55       		.uleb128 0x55
+ 240 000c 17       		.uleb128 0x17
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 6
+
+
+ 241 000d 11       		.uleb128 0x11
+ 242 000e 01       		.uleb128 0x1
+ 243 000f 10       		.uleb128 0x10
+ 244 0010 17       		.uleb128 0x17
+ 245 0011 00       		.byte	0
+ 246 0012 00       		.byte	0
+ 247 0013 02       		.uleb128 0x2
+ 248 0014 24       		.uleb128 0x24
+ 249 0015 00       		.byte	0
+ 250 0016 0B       		.uleb128 0xb
+ 251 0017 0B       		.uleb128 0xb
+ 252 0018 3E       		.uleb128 0x3e
+ 253 0019 0B       		.uleb128 0xb
+ 254 001a 03       		.uleb128 0x3
+ 255 001b 0E       		.uleb128 0xe
+ 256 001c 00       		.byte	0
+ 257 001d 00       		.byte	0
+ 258 001e 03       		.uleb128 0x3
+ 259 001f 16       		.uleb128 0x16
+ 260 0020 00       		.byte	0
+ 261 0021 03       		.uleb128 0x3
+ 262 0022 0E       		.uleb128 0xe
+ 263 0023 3A       		.uleb128 0x3a
+ 264 0024 0B       		.uleb128 0xb
+ 265 0025 3B       		.uleb128 0x3b
+ 266 0026 0B       		.uleb128 0xb
+ 267 0027 49       		.uleb128 0x49
+ 268 0028 13       		.uleb128 0x13
+ 269 0029 00       		.byte	0
+ 270 002a 00       		.byte	0
+ 271 002b 04       		.uleb128 0x4
+ 272 002c 24       		.uleb128 0x24
+ 273 002d 00       		.byte	0
+ 274 002e 0B       		.uleb128 0xb
+ 275 002f 0B       		.uleb128 0xb
+ 276 0030 3E       		.uleb128 0x3e
+ 277 0031 0B       		.uleb128 0xb
+ 278 0032 03       		.uleb128 0x3
+ 279 0033 08       		.uleb128 0x8
+ 280 0034 00       		.byte	0
+ 281 0035 00       		.byte	0
+ 282 0036 05       		.uleb128 0x5
+ 283 0037 16       		.uleb128 0x16
+ 284 0038 00       		.byte	0
+ 285 0039 03       		.uleb128 0x3
+ 286 003a 0E       		.uleb128 0xe
+ 287 003b 3A       		.uleb128 0x3a
+ 288 003c 0B       		.uleb128 0xb
+ 289 003d 3B       		.uleb128 0x3b
+ 290 003e 05       		.uleb128 0x5
+ 291 003f 49       		.uleb128 0x49
+ 292 0040 13       		.uleb128 0x13
+ 293 0041 00       		.byte	0
+ 294 0042 00       		.byte	0
+ 295 0043 06       		.uleb128 0x6
+ 296 0044 2E       		.uleb128 0x2e
+ 297 0045 01       		.byte	0x1
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 7
+
+
+ 298 0046 3F       		.uleb128 0x3f
+ 299 0047 19       		.uleb128 0x19
+ 300 0048 03       		.uleb128 0x3
+ 301 0049 0E       		.uleb128 0xe
+ 302 004a 3A       		.uleb128 0x3a
+ 303 004b 0B       		.uleb128 0xb
+ 304 004c 3B       		.uleb128 0x3b
+ 305 004d 0B       		.uleb128 0xb
+ 306 004e 49       		.uleb128 0x49
+ 307 004f 13       		.uleb128 0x13
+ 308 0050 11       		.uleb128 0x11
+ 309 0051 01       		.uleb128 0x1
+ 310 0052 12       		.uleb128 0x12
+ 311 0053 06       		.uleb128 0x6
+ 312 0054 40       		.uleb128 0x40
+ 313 0055 18       		.uleb128 0x18
+ 314 0056 9642     		.uleb128 0x2116
+ 315 0058 19       		.uleb128 0x19
+ 316 0059 01       		.uleb128 0x1
+ 317 005a 13       		.uleb128 0x13
+ 318 005b 00       		.byte	0
+ 319 005c 00       		.byte	0
+ 320 005d 07       		.uleb128 0x7
+ 321 005e 34       		.uleb128 0x34
+ 322 005f 00       		.byte	0
+ 323 0060 03       		.uleb128 0x3
+ 324 0061 08       		.uleb128 0x8
+ 325 0062 3A       		.uleb128 0x3a
+ 326 0063 0B       		.uleb128 0xb
+ 327 0064 3B       		.uleb128 0x3b
+ 328 0065 0B       		.uleb128 0xb
+ 329 0066 49       		.uleb128 0x49
+ 330 0067 13       		.uleb128 0x13
+ 331 0068 00       		.byte	0
+ 332 0069 00       		.byte	0
+ 333 006a 08       		.uleb128 0x8
+ 334 006b 34       		.uleb128 0x34
+ 335 006c 00       		.byte	0
+ 336 006d 03       		.uleb128 0x3
+ 337 006e 0E       		.uleb128 0xe
+ 338 006f 3A       		.uleb128 0x3a
+ 339 0070 0B       		.uleb128 0xb
+ 340 0071 3B       		.uleb128 0x3b
+ 341 0072 0B       		.uleb128 0xb
+ 342 0073 49       		.uleb128 0x49
+ 343 0074 13       		.uleb128 0x13
+ 344 0075 02       		.uleb128 0x2
+ 345 0076 18       		.uleb128 0x18
+ 346 0077 00       		.byte	0
+ 347 0078 00       		.byte	0
+ 348 0079 09       		.uleb128 0x9
+ 349 007a 34       		.uleb128 0x34
+ 350 007b 00       		.byte	0
+ 351 007c 03       		.uleb128 0x3
+ 352 007d 08       		.uleb128 0x8
+ 353 007e 3A       		.uleb128 0x3a
+ 354 007f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 8
+
+
+ 355 0080 3B       		.uleb128 0x3b
+ 356 0081 0B       		.uleb128 0xb
+ 357 0082 49       		.uleb128 0x49
+ 358 0083 13       		.uleb128 0x13
+ 359 0084 02       		.uleb128 0x2
+ 360 0085 18       		.uleb128 0x18
+ 361 0086 00       		.byte	0
+ 362 0087 00       		.byte	0
+ 363 0088 0A       		.uleb128 0xa
+ 364 0089 0B       		.uleb128 0xb
+ 365 008a 01       		.byte	0x1
+ 366 008b 11       		.uleb128 0x11
+ 367 008c 01       		.uleb128 0x1
+ 368 008d 12       		.uleb128 0x12
+ 369 008e 06       		.uleb128 0x6
+ 370 008f 00       		.byte	0
+ 371 0090 00       		.byte	0
+ 372 0091 0B       		.uleb128 0xb
+ 373 0092 2E       		.uleb128 0x2e
+ 374 0093 01       		.byte	0x1
+ 375 0094 3F       		.uleb128 0x3f
+ 376 0095 19       		.uleb128 0x19
+ 377 0096 03       		.uleb128 0x3
+ 378 0097 0E       		.uleb128 0xe
+ 379 0098 3A       		.uleb128 0x3a
+ 380 0099 0B       		.uleb128 0xb
+ 381 009a 3B       		.uleb128 0x3b
+ 382 009b 0B       		.uleb128 0xb
+ 383 009c 49       		.uleb128 0x49
+ 384 009d 13       		.uleb128 0x13
+ 385 009e 3C       		.uleb128 0x3c
+ 386 009f 19       		.uleb128 0x19
+ 387 00a0 00       		.byte	0
+ 388 00a1 00       		.byte	0
+ 389 00a2 0C       		.uleb128 0xc
+ 390 00a3 18       		.uleb128 0x18
+ 391 00a4 00       		.byte	0
+ 392 00a5 00       		.byte	0
+ 393 00a6 00       		.byte	0
+ 394 00a7 0D       		.uleb128 0xd
+ 395 00a8 34       		.uleb128 0x34
+ 396 00a9 00       		.byte	0
+ 397 00aa 03       		.uleb128 0x3
+ 398 00ab 0E       		.uleb128 0xe
+ 399 00ac 3A       		.uleb128 0x3a
+ 400 00ad 0B       		.uleb128 0xb
+ 401 00ae 3B       		.uleb128 0x3b
+ 402 00af 05       		.uleb128 0x5
+ 403 00b0 49       		.uleb128 0x49
+ 404 00b1 13       		.uleb128 0x13
+ 405 00b2 3F       		.uleb128 0x3f
+ 406 00b3 19       		.uleb128 0x19
+ 407 00b4 3C       		.uleb128 0x3c
+ 408 00b5 19       		.uleb128 0x19
+ 409 00b6 00       		.byte	0
+ 410 00b7 00       		.byte	0
+ 411 00b8 0E       		.uleb128 0xe
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 9
+
+
+ 412 00b9 35       		.uleb128 0x35
+ 413 00ba 00       		.byte	0
+ 414 00bb 49       		.uleb128 0x49
+ 415 00bc 13       		.uleb128 0x13
+ 416 00bd 00       		.byte	0
+ 417 00be 00       		.byte	0
+ 418 00bf 00       		.byte	0
+ 419              		.section	.debug_aranges,"",%progbits
+ 420 0000 1C000000 		.4byte	0x1c
+ 421 0004 0200     		.2byte	0x2
+ 422 0006 00000000 		.4byte	.Ldebug_info0
+ 423 000a 04       		.byte	0x4
+ 424 000b 00       		.byte	0
+ 425 000c 0000     		.2byte	0
+ 426 000e 0000     		.2byte	0
+ 427 0010 00000000 		.4byte	.LFB63
+ 428 0014 2C000000 		.4byte	.LFE63-.LFB63
+ 429 0018 00000000 		.4byte	0
+ 430 001c 00000000 		.4byte	0
+ 431              		.section	.debug_ranges,"",%progbits
+ 432              	.Ldebug_ranges0:
+ 433 0000 00000000 		.4byte	.LFB63
+ 434 0004 2C000000 		.4byte	.LFE63
+ 435 0008 00000000 		.4byte	0
+ 436 000c 00000000 		.4byte	0
+ 437              		.section	.debug_line,"",%progbits
+ 438              	.Ldebug_line0:
+ 439 0000 6D010000 		.section	.debug_str,"MS",%progbits,1
+ 439      02004901 
+ 439      00000201 
+ 439      FB0E0D00 
+ 439      01010101 
+ 440              	.LASF6:
+ 441 0000 6C6F6E67 		.ascii	"long long int\000"
+ 441      206C6F6E 
+ 441      6720696E 
+ 441      7400
+ 442              	.LASF3:
+ 443 000e 73686F72 		.ascii	"short unsigned int\000"
+ 443      7420756E 
+ 443      7369676E 
+ 443      65642069 
+ 443      6E7400
+ 444              	.LASF8:
+ 445 0021 756E7369 		.ascii	"unsigned int\000"
+ 445      676E6564 
+ 445      20696E74 
+ 445      00
+ 446              	.LASF22:
+ 447 002e 52785F31 		.ascii	"Rx_1_Read\000"
+ 447      5F526561 
+ 447      6400
+ 448              	.LASF21:
+ 449 0038 6D61696E 		.ascii	"main\000"
+ 449      00
+ 450              	.LASF11:
+ 451 003d 75696E74 		.ascii	"uint8\000"
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 10
+
+
+ 451      3800
+ 452              	.LASF5:
+ 453 0043 6C6F6E67 		.ascii	"long unsigned int\000"
+ 453      20756E73 
+ 453      69676E65 
+ 453      6420696E 
+ 453      7400
+ 454              	.LASF7:
+ 455 0055 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 455      206C6F6E 
+ 455      6720756E 
+ 455      7369676E 
+ 455      65642069 
+ 456              	.LASF14:
+ 457 006c 63686172 		.ascii	"char8\000"
+ 457      3800
+ 458              	.LASF1:
+ 459 0072 756E7369 		.ascii	"unsigned char\000"
+ 459      676E6564 
+ 459      20636861 
+ 459      7200
+ 460              	.LASF15:
+ 461 0080 63686172 		.ascii	"char\000"
+ 461      00
+ 462              	.LASF17:
+ 463 0085 636F756E 		.ascii	"count\000"
+ 463      7400
+ 464              	.LASF4:
+ 465 008b 6C6F6E67 		.ascii	"long int\000"
+ 465      20696E74 
+ 465      00
+ 466              	.LASF18:
+ 467 0094 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 467      4320342E 
+ 467      392E3320 
+ 467      32303135 
+ 467      30333033 
+ 468 00c7 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 468      20726576 
+ 468      6973696F 
+ 468      6E203232 
+ 468      31323230 
+ 469 00fa 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 469      66756E63 
+ 469      74696F6E 
+ 469      2D736563 
+ 469      74696F6E 
+ 470              	.LASF19:
+ 471 0122 2E5C6D61 		.ascii	".\\main.c\000"
+ 471      696E2E63 
+ 471      00
+ 472              	.LASF13:
+ 473 012b 646F7562 		.ascii	"double\000"
+ 473      6C6500
+ 474              	.LASF23:
+ 475 0132 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 475      52784275 
+ARM GAS  C:\Users\JOSEAN~1\AppData\Local\Temp\ccNJk6sj.s 			page 11
+
+
+ 475      66666572 
+ 475      00
+ 476              	.LASF0:
+ 477 013f 7369676E 		.ascii	"signed char\000"
+ 477      65642063 
+ 477      68617200 
+ 478              	.LASF20:
+ 479 014b 433A5C55 		.ascii	"C:\\Users\\Jose Antonio\\Documents\\PSOC Creator\\P"
+ 479      73657273 
+ 479      5C4A6F73 
+ 479      6520416E 
+ 479      746F6E69 
+ 480 0179 726F7965 		.ascii	"royectosPSOC\\UART_Rx01.cydsn\000"
+ 480      63746F73 
+ 480      50534F43 
+ 480      5C554152 
+ 480      545F5278 
+ 481              	.LASF9:
+ 482 0196 5F5F696E 		.ascii	"__int32_t\000"
+ 482      7433325F 
+ 482      7400
+ 483              	.LASF12:
+ 484 01a0 666C6F61 		.ascii	"float\000"
+ 484      7400
+ 485              	.LASF2:
+ 486 01a6 73686F72 		.ascii	"short int\000"
+ 486      7420696E 
+ 486      7400
+ 487              	.LASF10:
+ 488 01b0 696E7433 		.ascii	"int32_t\000"
+ 488      325F7400 
+ 489              	.LASF16:
+ 490 01b8 73697A65 		.ascii	"sizetype\000"
+ 490      74797065 
+ 490      00
+ 491              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
